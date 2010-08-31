@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="solution">
+</Property><Property Name="Solution File" Value="C:\course\nbdn_store\solution.sln">
+</Property><Property Name="Date" Value="31 August 2010">
+</Property><Property Name="Time" Value="14:35">
+</Property></Properties><Event ErrorLevel="0" Project="nothinbutdotnetstore" Source="product\nothinbutdotnetstore\nothinbutdotnetstore.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="nothinbutdotnetstore" Source="product\nothinbutdotnetstore\nothinbutdotnetstore.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="build" Source="build.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="build" Source="build.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="nothinbutdotnetstore.web.ui" Source="product\nothinbutdotnetstore.web.ui\nothinbutdotnetstore.web.ui.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="nothinbutdotnetstore.web.ui" Source="product\nothinbutdotnetstore.web.ui\nothinbutdotnetstore.web.ui.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="nothinbutdotnetstore.specs" Source="product\nothinbutdotnetstore.specs\nothinbutdotnetstore.specs.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="nothinbutdotnetstore.specs" Source="product\nothinbutdotnetstore.specs\nothinbutdotnetstore.specs.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="2" Project="nothinbutdotnetstore.web.ui" Source="product\nothinbutdotnetstore.web.ui\nothinbutdotnetstore.web.ui.csproj" Description="Unable to read the project file 'nothinbutdotnetstore.web.ui.csproj'. &#xA;C:\course\nbdn_store\product\nothinbutdotnetstore.web.ui\nothinbutdotnetstore.web.ui.csproj(127,126): The expression &quot;&quot;&quot;.vsversion&quot; cannot be evaluated. Method 'System.String.vsversion' not found.">
+</Event><Event ErrorLevel="0" Project="" Source="solution.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="solution.sln" Description="Converted">
+</Event></UpgradeLog>
