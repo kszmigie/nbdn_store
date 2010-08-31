@@ -53,7 +53,7 @@ end
 
 desc 'compiles the project'
 task :compile => :expand_all_template_files do
-  MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => 'solution.sln'
+  MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => get_solution_file_name(local_settings)
 end
 
 task :from_ide  do
@@ -79,10 +79,14 @@ namespace :specs do
   end
 end
 
+def get_solution_file_name(local_settings)
+   solution=local_settings[:use_vs2010] ? ".vs10" : ""
+   "solution#{solution}.sln"
+end
+
 desc "open the solution"
 task :sln do
   Thread.new do
-    solution = local_settings[:use_vs2010] ? ".vs10" : ""
-    system "devenv solution#{solution}.sln"
+    system "devenv #{get_solution_file_name(local_settings)}"
   end
 end
