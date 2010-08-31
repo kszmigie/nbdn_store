@@ -12,7 +12,8 @@ class LocalSettings
   	:database_path => "C:\\databases" ,
   	:log_file_name => "#{Project.name}_log.txt",
   	:log_level => "DEBUG",
-  	:debug => "TRUE"
+  	:debug => "TRUE",
+  	:use_vs2010 => "true"
 
   }
  end

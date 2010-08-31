@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nothinbutdotnetstore", "product\nothinbutdotnetstore\nothinbutdotnetstore.csproj", "{922EF2FE-820B-4ED5-9D64-7D716E135719}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "build", "build.csproj", "{EAA828F4-419B-4078-8EB6-533FBD86E800}"
