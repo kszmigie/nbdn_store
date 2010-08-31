@@ -18,7 +18,7 @@ namespace nothinbutdotnetstore.specs.utility
 
         static HttpRequest create_request()
         {
-            return new HttpRequest("blah.aspx", "http://blah.aspx", String.Empty);
+            return new HttpRequest("blah.aspx", "http://localhost/blah.aspx", String.Empty);
         }
     }
 }

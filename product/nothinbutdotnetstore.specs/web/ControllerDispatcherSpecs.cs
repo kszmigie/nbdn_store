@@ -22,7 +22,6 @@ namespace nothinbutdotnetstore.specs.web
              {
                  request_factory = the_dependency<RequestFactory>();
                  front_controller = the_dependency<FrontController>();
-
                  the_context = ObjectMother.create_http_context();
                  request = new object();
 
