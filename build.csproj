@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EAA828F4-419B-4078-8EB6-533FBD86E800}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -58,6 +58,7 @@
     <None Include="product\config\app.config.xp.template" />
     <None Include="product\config\hibernate.cfg.xml.template" />
     <None Include="product\config\log4net.config.xml.template" />
+    <None Include="product\config\our_config.txt.template" />
     <None Include="product\sql\data\001\001_populate_foo.sql.template" />
     <None Include="product\sql\ddl\001\001_db.sql.template" />
     <None Include="product\sql\ddl\001\002_security.sql.template" />
