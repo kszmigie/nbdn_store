@@ -82,6 +82,7 @@ end
 desc "open the solution"
 task :sln do
   Thread.new do
-    system "devenv solution.sln"
+    solution = local_settings[:use_vs2010] ? ".vs10" : ""
+    system "devenv solution#{solution}.sln"
   end
 end

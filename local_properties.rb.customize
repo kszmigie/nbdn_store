@@ -13,8 +13,7 @@ class LocalSettings
   	:log_file_name => "#{Project.name}_log.txt",
   	:log_level => "DEBUG",
   	:debug => "TRUE",
-  	:use_vs2010 => "true"
-
+  	:use_vs2010 => "false"
   }
  end
 end
