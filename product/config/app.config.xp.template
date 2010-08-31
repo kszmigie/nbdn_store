@@ -15,9 +15,9 @@
     </pages>
     <authentication mode="Windows"/>
     <httpHandlers>      
-      <!--<add verb="*"
+      <add verb="*"
            path="*.store"
-           type="?" />-->
+           type="nothinbutdotnetstore.web.core.ControllerDispatcher,nothinbutdotnetstore" />
     </httpHandlers>
    </system.web>
   
