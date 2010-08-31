@@ -84,9 +84,11 @@ def get_solution_file_name(local_settings)
    "solution#{solution}.sln"
 end
 
+
 desc "open the solution"
 task :sln do
+path = "devenv #{get_solution_file_name(local_settings)}"
   Thread.new do
-    system "devenv #{get_solution_file_name(local_settings)}"
+    system path
   end
 end
