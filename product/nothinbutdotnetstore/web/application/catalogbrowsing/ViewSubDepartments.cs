@@ -4,17 +4,17 @@ using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
-    public class ViewMainDepartments : ApplicationCommand
+    public class ViewSubDepartments : ApplicationCommand
     {
         CatalogBrowsingTasks catalog_browsing_tasks;
         Renderer renderer;
 
-        public ViewMainDepartments():this(new StubCatalogBrowsingTasks(),new WebFormRenderer())
+        public ViewSubDepartments():this(new StubCatalogBrowsingTasks(),new WebFormRenderer())
         {
 
         }
 
-        public ViewMainDepartments(CatalogBrowsingTasks catalog_browsing_tasks, Renderer renderer)
+        public ViewSubDepartments(CatalogBrowsingTasks catalog_browsing_tasks, Renderer renderer)
         {
             this.catalog_browsing_tasks = catalog_browsing_tasks;
             this.renderer = renderer;
@@ -22,7 +22,7 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
 
         public void process(Request request)
         {
-            renderer.render(catalog_browsing_tasks.get_all_departments());
+            renderer.render(catalog_browsing_tasks.get_sub_departments(request.departmentname));
         }
     }
 }

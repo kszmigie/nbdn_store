@@ -64,6 +64,7 @@
     <Compile Include="model\Department.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
     <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultViewFor.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -77,9 +78,7 @@
     <Compile Include="web\core\ControllerDispatcher.cs" />
     <Compile Include="web\core\DefaultCommandBroker.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
-    <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestCommand.cs" />
-    <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\FrontController.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
     <Compile Include="web\core\Request.cs" />
