@@ -2,7 +2,7 @@ include FileTest
 
 class SqlRunner
   def initialize(settings = Hash.new("Not found"))
-    @sql_tool = settings.fetch(:sql_tool,File.join(ENV['SystemDrive'],'program files','microsoft sql server','100','tools','binn','osql.exe'))
+    @sql_tool = settings.fetch(:sql_tool,File.join(ENV['SYSTEMDRIVE'],'program files','microsoft sql server','100','tools','binn','osql.exe'))
     @command_line_args = settings.fetch(:command_line_args, '-b -i')
     @connection_string = settings.fetch(:connection_string,"-E")
   end
@@ -103,7 +103,7 @@ class MSBuildRunner
 		compile_target = attributes.fetch(:compile_target, 'debug')
 	    solution_file = attributes[:solution_file]
 		
-		framework_dir = File.join(ENV['windir'].dup, 'Microsoft.NET', 'Framework', 'v3.5')
+		framework_dir = File.join(ENV['WINDIR'].dup, 'Microsoft.NET', 'Framework', 'v3.5')
 		msbuild_file = File.join(framework_dir, 'msbuild.exe')
 		
 		sh "#{msbuild_file} #{solution_file} /property:Configuration=#{compile_target} /t:Rebuild"
