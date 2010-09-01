@@ -91,7 +91,7 @@
     <Compile Include="web\core\ViewFor.cs">
     </Compile>
     <Compile Include="web\core\ViewBroker.cs" />
-    <Compile Include="web\ViewProductCommand.cs" />
+    <Compile Include="web\ViewProducts.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
