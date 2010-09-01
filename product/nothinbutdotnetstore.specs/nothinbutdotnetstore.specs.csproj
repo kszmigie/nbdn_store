@@ -79,8 +79,10 @@
     <Compile Include="utility\ObjectMother.cs" />
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
+    <Compile Include="web\FrontControllerFactorySpecs.cs" />
     <Compile Include="web\FrontControllerSpecs.cs" />
     <Compile Include="web\RequestCommandSpecs.cs" />
+    <Compile Include="web\RequestFactorySpecs.cs" />
     <Compile Include="web\ViewMainDepartmentsSpecs.cs" />
   </ItemGroup>
   <ItemGroup>

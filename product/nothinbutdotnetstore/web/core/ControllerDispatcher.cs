@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Web;
+using nothinbutdotnetstore.model;
+using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.web.core
 {
@@ -6,6 +9,10 @@ namespace nothinbutdotnetstore.web.core
     {
         RequestFactory request_factory;
         FrontController front_controller;
+
+        public ControllerDispatcher() : this(new DefaultRequestFactory(), new DefaultFrontControllerFactory().get_front_controller())
+        {
+        }
 
         public ControllerDispatcher(RequestFactory request_factory, FrontController front_controller)
         {

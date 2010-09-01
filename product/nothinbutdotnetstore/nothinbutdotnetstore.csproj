@@ -61,14 +61,22 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Department.cs" />
+    <Compile Include="model\DefaultGateway.cs" />
+    <Compile Include="web\application\catalogbrowsing\DefaultPageRenderer.cs" />
+    <Compile Include="web\application\catalogbrowsing\PageRenderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartments.cs" />
     <Compile Include="web\core\ApplicationCommand.cs" />
     <Compile Include="web\core\CommandBroker.cs" />
     <Compile Include="web\core\ControllerDispatcher.cs" />
     <Compile Include="web\core\DefaultCommandBroker.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
+    <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestCommand.cs" />
+    <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\FrontController.cs" />
+    <Compile Include="web\core\DefaultFrontControllerFactory.cs" />
+    <Compile Include="web\core\FrontControllerFactory.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
     <Compile Include="web\core\Request.cs" />
     <Compile Include="web\core\RequestCommand .cs" />
