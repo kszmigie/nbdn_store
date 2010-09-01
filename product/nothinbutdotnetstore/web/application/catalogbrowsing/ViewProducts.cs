@@ -2,7 +2,7 @@ using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks;
 using nothinbutdotnetstore.web.core;
 
-namespace nothinbutdotnetstore.web
+namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
     public class ViewProducts : ApplicationCommand
     {
