@@ -1,27 +1,28 @@
-using System;
-using System.Collections.Generic;
-using nothinbutdotnetstore.model;
+using nothinbutdotnetstore.tasks;
+using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
+using nothinbutdotnetstore.web.core.stubs;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
     public class ViewMainDepartments : ApplicationCommand
     {
-        private readonly DefaultGateway default_gateway;
-        private readonly PageRenderer renderer;
-        private readonly string page_path;
+        CatalogBrowsingTasks catalog_browsing_tasks;
+        Renderer renderer;
 
-        public ViewMainDepartments(DefaultGateway default_gateway, PageRenderer renderer, string page_path)
+        public ViewMainDepartments():this(new StubCatalogBrowsingTasks(),new StubRenderer())
         {
-            this.default_gateway = default_gateway;
+        }
+
+        public ViewMainDepartments(CatalogBrowsingTasks catalog_browsing_tasks, Renderer renderer)
+        {
+            this.catalog_browsing_tasks = catalog_browsing_tasks;
             this.renderer = renderer;
-            this.page_path = page_path;
         }
 
         public void process(Request request)
         {
-            var departments = default_gateway.get_all_departments();
-            renderer.Render(request, page_path, departments);
+            renderer.render(catalog_browsing_tasks.get_all_departments());
         }
     }
 }

@@ -44,24 +44,5 @@ namespace nothinbutdotnetstore.specs.web
              static HttpContext the_context;
              static RequestFactory request_factory;
          }
-
-         [Subject(typeof(ControllerDispatcher))]
-         public class when_creating_a_controller_dispatcher : concern
-         {
-             //Establish c = () =>
-             //{
-             //   the_dependency<DefaultRequestFactory>()                         
-             //}
-
-
-             //no because, as we are testing the creation of the sut
-             //Because b = () => 
-                 
-
-             It should_use_the_default_front_controller = () =>
-                 default_front_controller_factory.received(x => x.get_front_controller());
-
-             private static DefaultFrontControllerFactory default_front_controller_factory;
-         }
      }
  }

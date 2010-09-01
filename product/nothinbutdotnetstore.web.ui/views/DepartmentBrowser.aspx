@@ -6,12 +6,11 @@
     <p class="ListHead">Select An Department</p>
 
             <table>            
-		<!-- for each of the main departments in the store -->
-        	<% foreach (Department department in (IEnumerable<Department>)Items["ViewModel"])
+        	<% foreach (Department department in (IEnumerable<Department>)Context.Items["blah"])
             {%>
             <tr class="ListItem">
                		 <td>                     
-                        <%= department.DepartmentName %>
+                        <%= department.name %>
                 	</td>
            	 </tr>        
              <%

@@ -62,9 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Department.cs" />
-    <Compile Include="model\DefaultGateway.cs" />
-    <Compile Include="web\application\catalogbrowsing\DefaultPageRenderer.cs" />
-    <Compile Include="web\application\catalogbrowsing\PageRenderer.cs" />
+    <Compile Include="tasks\CatalogBrowsingTasks.cs" />
+    <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
+    <Compile Include="web\core\Renderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartments.cs" />
     <Compile Include="web\core\ApplicationCommand.cs" />
     <Compile Include="web\core\CommandBroker.cs" />
@@ -75,13 +75,14 @@
     <Compile Include="web\core\DefaultRequestCommand.cs" />
     <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\FrontController.cs" />
-    <Compile Include="web\core\DefaultFrontControllerFactory.cs" />
-    <Compile Include="web\core\FrontControllerFactory.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
     <Compile Include="web\core\Request.cs" />
     <Compile Include="web\core\RequestCommand .cs" />
     <Compile Include="web\core\RequestCriteria.cs" />
     <Compile Include="web\core\RequestFactory.cs" />
+    <Compile Include="web\core\stubs\StubRenderer.cs" />
+    <Compile Include="web\core\stubs\StubRequestFactory.cs" />
+    <Compile Include="web\core\stubs\StubSetOfCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
