@@ -12,9 +12,9 @@ namespace nothinbutdotnetstore.web.core.stubs
 
         class StubRequest : Request
         {
-            public string departmentname
+            public InputModel map<InputModel>()
             {
-                get { throw new NotImplementedException(); }
+                throw new NotImplementedException();
             }
         }
     }

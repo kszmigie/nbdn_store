@@ -1,3 +1,4 @@
+using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks;
 using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
@@ -22,7 +23,7 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
 
         public void process(Request request)
         {
-            renderer.render(catalog_browsing_tasks.get_sub_departments(request.departmentname));
+            renderer.render(catalog_browsing_tasks.get_sub_departments_in(request.map<Department>()));
         }
     }
 }

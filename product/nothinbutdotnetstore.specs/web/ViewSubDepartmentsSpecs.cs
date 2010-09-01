@@ -24,9 +24,10 @@ namespace nothinbutdotnetstore.specs.web
                 request = an<Request>();
                 default_catalog_browsing_tasks = the_dependency<CatalogBrowsingTasks>();
                 all_sub_departments = new List<Department>();
+                department = new Department();
 
-                request.Stub(x => x.departmentname).Return("Test");
-                default_catalog_browsing_tasks.Stub(x => x.get_sub_departments("Test")).Return(all_sub_departments);
+                request.Stub(x => x.map<Department>()).Return(department);
+                default_catalog_browsing_tasks.Stub(x => x.get_sub_departments_in(department)).Return(all_sub_departments);
 
                 renderer = the_dependency<Renderer>();
             };
@@ -41,6 +42,7 @@ namespace nothinbutdotnetstore.specs.web
             static Renderer renderer;
             static Request request;
             static IEnumerable<Department> all_sub_departments;
+            static Department department;
         }
     }
 }
