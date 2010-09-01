@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using nothinbutdotnetstore.model;
@@ -13,6 +14,11 @@ namespace nothinbutdotnetstore.tasks.stubs
         }
 
         public IEnumerable<Department> get_sub_departments_in(Department departmentname)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> get_dept_products(Department dept)
         {
             throw new NotImplementedException();
         }
