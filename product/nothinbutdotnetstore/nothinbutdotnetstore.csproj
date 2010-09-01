@@ -77,9 +77,7 @@
     <Compile Include="web\core\ControllerDispatcher.cs" />
     <Compile Include="web\core\DefaultCommandBroker.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
-    <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestCommand.cs" />
-    <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\FrontController.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
     <Compile Include="web\core\Request.cs" />
