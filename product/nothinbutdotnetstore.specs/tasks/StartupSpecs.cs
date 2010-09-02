@@ -23,7 +23,6 @@ namespace nothinbutdotnetstore.specs.tasks
 
             It should_be_have_a_list_of_commands = () =>
                 IOC.retrieve.an<IEnumerable<RequestCommand>>().ShouldNotBeEmpty();
-
         }
     }
 }

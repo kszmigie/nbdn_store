@@ -67,10 +67,12 @@
     <Compile Include="infrastructure\containers\basic\DependencyResolver.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyResolverNotFoundException.cs" />
     <Compile Include="infrastructure\containers\basic\FunctionalDependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\MissingDependencyResolver.cs" />
     <Compile Include="infrastructure\containers\basic\ResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\Container.cs" />
     <Compile Include="infrastructure\containers\ContainerResolver.cs" />
     <Compile Include="infrastructure\containers\IOC.cs" />
+    <Compile Include="infrastructure\DefaultMapperRegistry.cs" />
     <Compile Include="infrastructure\DefaultMappingGateway.cs" />
     <Compile Include="infrastructure\Mapper.cs" />
     <Compile Include="infrastructure\MapperRegistry.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="tasks\Repository.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
     <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
+    <Compile Include="web\core\stubs\NameValueCollectionToDepartmentMapper.cs" />
     <Compile Include="web\core\stubs\StubSetOfMappers.cs" />
     <Compile Include="tasks\startup\stubs\StubResolverDictionary.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />

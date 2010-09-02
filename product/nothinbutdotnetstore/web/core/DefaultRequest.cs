@@ -8,13 +8,13 @@ namespace nothinbutdotnetstore.web.core
     {
         MappingGateway mapping_gateway;
         public NameValueCollection payload;
-        private string page;
+        private string command;
 
         public DefaultRequest(MappingGateway mapping_gateway, NameValueCollection payload, string page_name)
         {
             this.mapping_gateway = mapping_gateway;
             this.payload = payload;
-            this.page = page_name.ToLower().Replace(".store", "").Replace("/views/", "").TrimStart('/');
+            this.command = page_name.ToLower().Replace(".store", "").Replace("/views/", "").TrimStart('/');
         }
 
         public InputModel map<InputModel>()
@@ -22,9 +22,9 @@ namespace nothinbutdotnetstore.web.core
             return mapping_gateway.map<NameValueCollection, InputModel>(payload);
         }
 
-        public string page_name
+        public string command_name
         {
-            get { return this.page; }
+            get { return this.command; }
         }
     }
 }

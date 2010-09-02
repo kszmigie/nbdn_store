@@ -17,7 +17,7 @@ namespace nothinbutdotnetstore.web.core.stubs
                 throw new NotImplementedException();
             }
 
-            public string page_name
+            public string command_name
             {
                 get { throw new NotImplementedException(); }
             }

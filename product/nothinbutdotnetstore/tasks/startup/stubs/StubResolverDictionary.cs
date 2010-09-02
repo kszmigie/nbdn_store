@@ -11,24 +11,24 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
 {
     public class StubResolverDictionary
     {
-        public static IDictionary<Type, Object> resolvers;
+        public static IDictionary<Type, DependencyResolver> resolvers;
 
         static StubResolverDictionary()
         {
-            StubRepository stubRepository = new StubRepository();
+            var stub_repository = new StubRepository();
             //note: not sure if this should be a stub or not
-            resolvers = new Dictionary<Type, object>
+            resolvers = new Dictionary<Type, DependencyResolver>
                 {
                     {typeof (FrontController), new FunctionalDependencyResolver(() => new DefaultFrontController(IOC.retrieve.an<CommandBroker>())) },
                     {typeof (CommandBroker), new FunctionalDependencyResolver(() => new DefaultCommandBroker(IOC.retrieve.an<IEnumerable<RequestCommand>>())) },
                     {typeof (IEnumerable<RequestCommand>), new FunctionalDependencyResolver(() => new StubSetOfCommands())},
                     {typeof (RequestFactory), new FunctionalDependencyResolver(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()))},
                     {typeof (MappingGateway), new FunctionalDependencyResolver(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()))},
-                    {typeof (MapperRegistry), new FunctionalDependencyResolver(() => new DefaultMapperRegistry(IOC.retrieve.an<IDictionary<Type, IDictionary<Type, Func<object>>>>()))},
+                    {typeof (MapperRegistry), new FunctionalDependencyResolver(() => new DefaultMapperRegistry(IOC.retrieve.an<Container>()))},
                     {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()))},
                     {typeof (Renderer), new FunctionalDependencyResolver(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()))},
                     {typeof (ViewBroker), new FunctionalDependencyResolver(() => new DefaultViewBroker())},
-                    {typeof (Repository), new FunctionalDependencyResolver(()=> stubRepository)},
+                    {typeof (Repository), new FunctionalDependencyResolver(()=> stub_repository)},
                     {typeof (IDictionary<Type, IDictionary<Type, Func<object>>>), new FunctionalDependencyResolver(() => StubSetOfMappers.set_of_mappers)}
                 };
 
