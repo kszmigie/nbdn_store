@@ -7,10 +7,11 @@ namespace nothinbutdotnetstore.web.core
         ViewBroker view_broker;
 
         public static HttpContextRetriever retriever = () =>
-        {
-            throw new NotImplementedException("You need to set this at configuration time"); 
-        };
-
+                                                           {
+                                                               throw new NotImplementedException(
+                                                                   "You need to set this at configuration time");
+                                                           };
+        
         public WebFormRenderer(ViewBroker view_broker)
         {
             this.view_broker = view_broker;

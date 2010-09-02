@@ -48,7 +48,10 @@ namespace nothinbutdotnetstore.tasks.startup
             resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
             resolvers.add<IEnumerable<RequestCommand>>(get_commands);
 
-            resolvers.add<ViewBroker>(() => new StubViewBroker());
+            resolvers.add<IDictionary<Type, string>>(get_viewmappings);
+            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<IDictionary<Type, string>>()));
+
+
             resolvers.add<CatalogBrowsingTasks>(() => new StubCatalogBrowsingTasks());
             
             ResolverRegistry registry = new DefaultResolverRegistry(resolvers);
@@ -56,6 +59,13 @@ namespace nothinbutdotnetstore.tasks.startup
 
             IOC.container_resolver = () => c;
             WebFormRenderer.retriever = () => HttpContext.Current;
+        }
+
+        static IDictionary<Type, string> get_viewmappings()
+        {
+            IDictionary<Type, string> mappings = new Dictionary<Type, string>();
+            mappings.Add(typeof (IEnumerable<Department>), "~/views/DepartmentBrowser.aspx"); 
+            return mappings;
         }
 
         static object get_commands()
