@@ -15,6 +15,7 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
 
         static StubResolverDictionary()
         {
+            StubRepository stubRepository = new StubRepository();
             //note: not sure if this should be a stub or not
             resolvers = new Dictionary<Type, object>
                 {
@@ -27,7 +28,7 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
                     {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()))},
                     {typeof (Renderer), new FunctionalDependencyResolver(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()))},
                     {typeof (ViewBroker), new FunctionalDependencyResolver(() => new DefaultViewBroker())},
-                    {typeof (Repository), new FunctionalDependencyResolver(()=> new StubRepository())},
+                    {typeof (Repository), new FunctionalDependencyResolver(()=> stubRepository)},
                     {typeof (IDictionary<Type, IDictionary<Type, Func<object>>>), new FunctionalDependencyResolver(() => StubSetOfMappers.set_of_mappers)}
                 };
 
