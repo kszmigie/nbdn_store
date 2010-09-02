@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="web\core\ViewBroker.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewProducts.cs" />
+    <Compile Include="web\application\DepartmentMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -6,17 +6,27 @@ using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
 using nothinbutdotnetstore.tasks.stubs;
+using nothinbutdotnetstore.web;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
 using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.stubs;
 
 namespace nothinbutdotnetstore.tasks.startup
 {
-    internal static class ResolverDictionaryExtensions
+    internal static class StartupHelpers
     {
         public static void add<T>(this Dictionary<Type, DependencyResolver> resolvers, Func<object> factory)
         {
             resolvers.Add(typeof(T), new FunctionalDependencyResolver(factory));
+        }
+
+        public static void add<Input, Output>(this IDictionary<Type, IDictionary<Type, object>> mappers, Mapper<Input, Output>  mapper)
+        {
+            if (!mappers.ContainsKey(typeof(Input)))
+            {
+                mappers[typeof(Input)] = new Dictionary<Type, object>();
+            }
+            mappers[typeof (Input)][typeof (Output)] = mappers;
         }
 
     }
@@ -25,6 +35,7 @@ namespace nothinbutdotnetstore.tasks.startup
     {
         public static void run()
         {
+         
             Dictionary<Type, DependencyResolver> resolvers = new Dictionary<Type, DependencyResolver>();
 
             resolvers.add<IDictionary<Type, IDictionary<Type, object>>>(get_mappers);
@@ -58,6 +69,7 @@ namespace nothinbutdotnetstore.tasks.startup
         static object get_mappers()
         {
             IDictionary<Type, IDictionary<Type, object>> mappers = new Dictionary<Type, IDictionary<Type, object>>();
+            mappers.add(new DepartmentMapper());
             return mappers;
 
         }
