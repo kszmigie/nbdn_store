@@ -1,5 +1,4 @@
 Request command routing
-Mapping a Department
 Mapper Registry
 Store.Master
 Product.aspx generic mapping - done

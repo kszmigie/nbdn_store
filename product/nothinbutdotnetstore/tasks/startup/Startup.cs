@@ -5,7 +5,6 @@ using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
 using nothinbutdotnetstore.tasks.startup.stubs;
-using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.stubs;
 

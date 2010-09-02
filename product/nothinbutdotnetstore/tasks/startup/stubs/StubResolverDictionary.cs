@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
-using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.stubs;
 
@@ -24,9 +23,9 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
                     {typeof (RequestFactory), new FunctionalDependencyResolver(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()))},
                     {typeof (MappingGateway), new FunctionalDependencyResolver(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()))},
                     {typeof (MapperRegistry), new FunctionalDependencyResolver(() => new DefaultMapperRegistry())},
-                    {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new StubCatalogBrowsingTasks())},
+                    {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new DefaultCatalogBrowsingTasks())},
                     {typeof (Renderer), new FunctionalDependencyResolver(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()))},
-                    {typeof (ViewBroker), new FunctionalDependencyResolver(() => new StubViewBroker())}
+                    {typeof (ViewBroker), new FunctionalDependencyResolver(() => new DefaultViewBroker())}
                 };
 
         }

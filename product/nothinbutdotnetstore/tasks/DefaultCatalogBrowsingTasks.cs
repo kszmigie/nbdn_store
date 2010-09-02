@@ -10,6 +10,14 @@ namespace nothinbutdotnetstore.tasks
         private IEnumerable<Product> products;
         private IEnumerable<Department> departments;
 
+        public DefaultCatalogBrowsingTasks(): this(
+            Enumerable.Range(1, 10).Select(x => new Department{name = x.ToString("Department 0")}),
+            Enumerable.Range(1, 10).Select(x => new Product { name = x.ToString("Product 0") })
+            )
+        {
+            
+        }
+
         public DefaultCatalogBrowsingTasks(IEnumerable<Department> departments, IEnumerable<Product> products)
         {
             this.departments = departments;
