@@ -5,6 +5,8 @@ using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks;
 using Machine.Specifications.DevelopWithPassion.Extensions;
+using nothinbutdotnetstore.web.application.catalogbrowsing.stubs;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs.web
 {
@@ -24,26 +26,32 @@ namespace nothinbutdotnetstore.specs.web
         {
             private Establish c = () =>
                                   {
-                                      the_main_departments = new List<Department>();
-                                      Enumerable.Range(1, 10).each(i => the_main_departments.Add(new Department {name = string.Format("Department {0}", i)}));
-
-                                      provide_a_basic_sut_constructor_argument<IEnumerable<Department>>(the_main_departments);
+                                      var repository = (DepartmentRepository)new StubRepository();
+                                      provide_a_basic_sut_constructor_argument(repository);
+                                      the_main_departments = repository.get_departments().Where(department => department.parent_department == null);
                                   };
 
             Because b = () =>
                 main_departments = sut.get_all_departments();
-
-
+            
             It should_only_return_the_departments_without_parent_departments = () =>
                 main_departments.ShouldContainOnly(the_main_departments);
 
             private static IEnumerable<Department> main_departments;
-            private static List<Department> the_main_departments;
+            private static IEnumerable<Department> the_main_departments;
         }
 
         [Subject(typeof(DefaultCatalogBrowsingTasks))]
         public class when_requesting_sub_departments : concern
         {
+            private Establish c = () =>
+            {
+                var repository = (DepartmentRepository)new StubRepository();
+                provide_a_basic_sut_constructor_argument(repository);
+                requested_department = repository.get_departments().First(department => department.parent_department == null);
+                the_sub_departments = repository.get_departments().Where(department => department.parent_department == requested_department);
+            };
+            
             Because b = () =>
                 sub_departments = sut.get_sub_departments_in(requested_department);
 
@@ -53,11 +61,22 @@ namespace nothinbutdotnetstore.specs.web
             private static IEnumerable<Department> sub_departments;
             private static IEnumerable<Department> the_sub_departments;
             private static Department requested_department;
+            private static DepartmentRepository department_repository;
         }
 
         [Subject(typeof(DefaultCatalogBrowsingTasks))]
         public class when_requesting_products : concern
         {
+            private Establish c = () =>
+            {
+                var repository = new StubRepository();
+                provide_a_basic_sut_constructor_argument((DepartmentRepository)repository);
+                provide_a_basic_sut_constructor_argument((ProductRepository)repository);
+                requested_department = repository.get_departments().First(department => department.parent_department != null);
+                the_products = repository.get_products().Where(department => department.parent_department == requested_department);
+            };
+            
+            
             Because b = () =>
                 products = sut.get_all_products_in(requested_department);
 
