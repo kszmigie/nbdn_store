@@ -11,7 +11,7 @@ namespace nothinbutdotnetstore.infrastructure.containers
 
         public static Container retrieve
         {
-            get { throw new NotImplementedException(); }
+            get { return container_resolver(); }
         }
     }
 }
