@@ -1,3 +1,4 @@
+ using System;
  using System.Data;
  using System.Data.SqlClient;
  using Machine.Specifications;
@@ -40,6 +41,35 @@ namespace nothinbutdotnetstore.specs.infrastructure
              static IDbConnection the_connection;
              static DependencyResolver dependency_resolver;
              static ResolverRegistry resolver_registry;
+         }
+
+         [Subject(typeof(DefaultContainer))]
+         public class when_getting_a_dependency_and_the_resolver_for_that_dependency_throws_an_error : concern
+         {
+             Establish c = () =>
+             {
+                 dependency_resolver = an<DependencyResolver>();
+                 inner_exception = new Exception();
+                 resolver_registry = the_dependency<ResolverRegistry>();
+
+                 resolver_registry.Stub(x => x.get_resolver_to_create(typeof(IDbConnection))).Return(dependency_resolver);
+                 dependency_resolver.Stub(x => x.create()).Throw(inner_exception);
+             };
+
+             Because b = () =>
+                 catch_exception(() => sut.an<IDbConnection>());
+
+
+             It should_throw_a_dependency_creation_exception_with_access_to_the_necessary_information = () =>
+             {
+                 var exception = exception_thrown_by_the_sut.ShouldBeAn<DependencyCreationException>();
+                 exception.InnerException.ShouldEqual(inner_exception);
+                 exception.type_that_could_not_be_created.ShouldEqual(typeof(IDbConnection));
+             };
+
+             static DependencyResolver dependency_resolver;
+             static ResolverRegistry resolver_registry;
+             static Exception inner_exception;
          }
      }
  }
