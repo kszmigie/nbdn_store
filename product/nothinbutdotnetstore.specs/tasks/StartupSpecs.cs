@@ -15,8 +15,7 @@ namespace nothinbutdotnetstore.specs.tasks
         [Subject(typeof(Startup))]
         public class when_the_application_has_started_up : concern
         {
-            Because b = () =>
-                Startup.run();
+            Because b = Startup.run;
 
             It should_be_able_to_access_key_services = () =>
                 IOC.retrieve.an<FrontController>().ShouldBeAn<DefaultFrontController>();
