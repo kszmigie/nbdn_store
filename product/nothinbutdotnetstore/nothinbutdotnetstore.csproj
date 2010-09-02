@@ -80,8 +80,8 @@
     <Compile Include="tasks\DefaultCatalogBrowsingTasks.cs" />
     <Compile Include="tasks\Repository.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
+    <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
     <Compile Include="web\core\stubs\StubSetOfMappers.cs" />
-    <Compile Include="web\application\catalogbrowsing\stubs\StubDepartmentRepository.cs" />
     <Compile Include="tasks\startup\stubs\StubResolverDictionary.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
