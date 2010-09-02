@@ -7,28 +7,26 @@ namespace nothinbutdotnetstore.tasks
 {
     public class DefaultCatalogBrowsingTasks : CatalogBrowsingTasks
     {
-        private ProductRepository products;
-        private DepartmentRepository departments;
+        private Repository repository;
 
-        public DefaultCatalogBrowsingTasks(IEnumerable<Department> departments, IEnumerable<Product> products)
+        public DefaultCatalogBrowsingTasks(Repository repository)
         {
-            this.departments = departments;
-            this.products = products;
+            this.repository = repository;
         }
 
         public IEnumerable<Department> get_all_departments()
         {
-            return departments.get_departments().Where(d => d.parent_department == null);
+            return repository.get_departments().Where(d => d.parent_department == null);
         }
 
         public IEnumerable<Department> get_sub_departments_in(Department parent_department)
         {
-            return departments.get_departments().Where(d => d.parent_department == parent_department);
+            return repository.get_departments().Where(d => d.parent_department == parent_department);
         }
 
         public IEnumerable<Product> get_all_products_in(Department parent_department)
         {
-            return products.get_products().Where(p => p.parent_department == parent_department);
+            return repository.get_products().Where(p => p.parent_department == parent_department);
         }
     }
 }

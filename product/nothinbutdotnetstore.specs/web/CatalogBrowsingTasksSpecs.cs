@@ -26,7 +26,7 @@ namespace nothinbutdotnetstore.specs.web
         {
             private Establish c = () =>
                                   {
-                                      var repository = (DepartmentRepository)new StubRepository();
+                                      var repository = (Repository)new StubRepository();
                                       provide_a_basic_sut_constructor_argument(repository);
                                       the_main_departments = repository.get_departments().Where(department => department.parent_department == null);
                                   };
@@ -46,7 +46,7 @@ namespace nothinbutdotnetstore.specs.web
         {
             private Establish c = () =>
             {
-                var repository = (DepartmentRepository)new StubRepository();
+                var repository = (Repository)new StubRepository();
                 provide_a_basic_sut_constructor_argument(repository);
                 requested_department = repository.get_departments().First(department => department.parent_department == null);
                 the_sub_departments = repository.get_departments().Where(department => department.parent_department == requested_department);
@@ -61,7 +61,7 @@ namespace nothinbutdotnetstore.specs.web
             private static IEnumerable<Department> sub_departments;
             private static IEnumerable<Department> the_sub_departments;
             private static Department requested_department;
-            private static DepartmentRepository department_repository;
+            private static Repository _repository;
         }
 
         [Subject(typeof(DefaultCatalogBrowsingTasks))]
@@ -70,8 +70,7 @@ namespace nothinbutdotnetstore.specs.web
             private Establish c = () =>
             {
                 var repository = new StubRepository();
-                provide_a_basic_sut_constructor_argument((DepartmentRepository)repository);
-                provide_a_basic_sut_constructor_argument((ProductRepository)repository);
+                provide_a_basic_sut_constructor_argument((Repository)repository);
                 requested_department = repository.get_departments().First(department => department.parent_department != null);
                 the_products = repository.get_products().Where(department => department.parent_department == requested_department);
             };

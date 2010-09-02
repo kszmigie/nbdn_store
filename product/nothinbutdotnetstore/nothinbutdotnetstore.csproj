@@ -78,8 +78,7 @@
     <Compile Include="model\Product.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
     <Compile Include="tasks\DefaultCatalogBrowsingTasks.cs" />
-    <Compile Include="tasks\DepartmentRepository.cs" />
-    <Compile Include="tasks\ProductRepository.cs" />
+    <Compile Include="tasks\Repository.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
     <Compile Include="web\application\catalogbrowsing\stubs\StubDepartmentRepository.cs" />
     <Compile Include="tasks\startup\stubs\StubResolverDictionary.cs" />

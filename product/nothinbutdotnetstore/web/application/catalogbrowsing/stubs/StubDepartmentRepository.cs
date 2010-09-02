@@ -5,7 +5,7 @@ using nothinbutdotnetstore.tasks;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
 {
-    public class StubRepository : DepartmentRepository, ProductRepository
+    public class StubRepository : Repository
     {
         private IList<Department> departments;
         private IList<Product> products;

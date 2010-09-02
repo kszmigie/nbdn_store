@@ -3,8 +3,9 @@ using nothinbutdotnetstore.model;
 
 namespace nothinbutdotnetstore.tasks
 {
-    public interface ProductRepository
+    public interface Repository
     {
+        IEnumerable<Department> get_departments();
         IEnumerable<Product> get_products();
     }
 }
