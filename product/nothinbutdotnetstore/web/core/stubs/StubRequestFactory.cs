@@ -16,6 +16,11 @@ namespace nothinbutdotnetstore.web.core.stubs
             {
                 throw new NotImplementedException();
             }
+
+            public string page_name
+            {
+                get { throw new NotImplementedException(); }
+            }
         }
     }
 }
