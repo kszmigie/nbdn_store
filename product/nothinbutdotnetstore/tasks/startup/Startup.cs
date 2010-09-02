@@ -27,7 +27,7 @@ namespace nothinbutdotnetstore.tasks.startup
             {
                 mappers[typeof(Input)] = new Dictionary<Type, object>();
             }
-            mappers[typeof (Input)][typeof (Output)] = mappers;
+            mappers[typeof (Input)][typeof (Output)] = mapper;
         }
 
     }
@@ -71,8 +71,11 @@ namespace nothinbutdotnetstore.tasks.startup
         static object get_commands()
         {
             List<RequestCommand> commands = new List<RequestCommand>();
-            commands.Add(new DefaultRequestCommand(r => true,
+            commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewMainDepartments.store",
                                                    new ViewMainDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(),
+                                                                           IOC.retrieve.an<Renderer>())));
+            commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewSubDepartments.store",
+                                                   new ViewSubDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(),
                                                                            IOC.retrieve.an<Renderer>())));
             return commands;
         }

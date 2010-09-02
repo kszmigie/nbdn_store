@@ -25,7 +25,10 @@ namespace nothinbutdotnetstore.infrastructure
             {
                 var subDict = mappers[inputType];
                 if (subDict.ContainsKey(outputType))
-                    return (Mapper<Input, Output>)subDict[outputType];
+                {
+                    object mapper = subDict[outputType];
+                    return (Mapper<Input, Output>) mapper;
+                }
             }
             throw new ApplicationException(string.Format("Mapper not found for types, Input: {0}, Output: {1}",
                                                          typeof (Input), typeof (Output)));

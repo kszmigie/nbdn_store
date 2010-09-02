@@ -30,8 +30,8 @@ namespace nothinbutdotnetstore.tasks.stubs
             fruits = new Department(next_id, "Fruit");
             meats = new Department(next_id, "Meats");
             candy = new Department(next_id, "Candy");
-            fruits_common = new Department(next_id, "Fruit", fruits.id);
-            fruits_exotic = new Department(next_id, "Fruit", fruits.id);
+            fruits_common = new Department(next_id, "Common", fruits.id);
+            fruits_exotic = new Department(next_id, "Exotic", fruits.id);
 
             meats_beef = new Department(next_id, "Beef", meats.id);
             meats_rodent = new Department(next_id, "Rodent", meats.id);

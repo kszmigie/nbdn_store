@@ -14,7 +14,9 @@ namespace nothinbutdotnetstore.web.core
 
         public Request create_from(HttpContext context)
         {
-            return new DefaultRequest(mapping_gateway, context.Request.Params);
+            string path = context.Request.Url.AbsolutePath;
+            var command_name = path.Substring(path.LastIndexOf('/') + 1);
+            return new DefaultRequest(mapping_gateway, context.Request.Params, command_name);
         }
     }
 }

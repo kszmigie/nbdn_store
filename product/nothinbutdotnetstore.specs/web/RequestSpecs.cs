@@ -24,6 +24,7 @@ namespace nothinbutdotnetstore.specs.web
                 mapping_gateway = the_dependency<MappingGateway>();
 
                 provide_a_basic_sut_constructor_argument(payload);
+                provide_a_basic_sut_constructor_argument("blah");
 
                 mapping_gateway.Stub(x => x.map<NameValueCollection,TheInputModel>(payload)).Return(the_model);
             };
@@ -39,6 +40,25 @@ namespace nothinbutdotnetstore.specs.web
             static NameValueCollection payload;
             static MappingGateway mapping_gateway;
         }
+
+        [Subject(typeof(DefaultRequest))]
+        public class when_asked_for_a_application_command_name : concern
+        {
+            Establish c = () =>
+            {
+                provide_a_basic_sut_constructor_argument("blah");
+            };
+
+            Because b = () =>
+                result = sut.application_command_name;
+
+            It should_provide_the_application_command_name = () =>
+                result.ShouldEqual("blah");
+
+            static string result;
+        }
+
+
 
         public class TheInputModel
         {
