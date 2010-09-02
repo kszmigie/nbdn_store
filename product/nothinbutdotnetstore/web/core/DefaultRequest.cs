@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Specialized;
 using nothinbutdotnetstore.infrastructure;
 
@@ -6,18 +5,18 @@ namespace nothinbutdotnetstore.web.core
 {
     public class DefaultRequest : Request
     {
-        MappingGateway model_mapper;
-        NameValueCollection payload;
+        MappingGateway mapping_gateway;
+        public NameValueCollection payload;
 
-        public DefaultRequest(MappingGateway model_mapper, NameValueCollection payload)
+        public DefaultRequest(MappingGateway mapping_gateway, NameValueCollection payload)
         {
-            this.model_mapper = model_mapper;
+            this.mapping_gateway = mapping_gateway;
             this.payload = payload;
         }
 
         public InputModel map<InputModel>()
         {
-            return model_mapper.map<NameValueCollection,InputModel>(payload);
+            return mapping_gateway.map<NameValueCollection, InputModel>(payload);
         }
     }
 }
