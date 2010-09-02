@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.infrastructure.containers;
@@ -20,6 +21,10 @@ namespace nothinbutdotnetstore.specs.tasks
 
             It should_be_able_to_access_key_services = () =>
                 IOC.retrieve.an<FrontController>().ShouldBeAn<DefaultFrontController>();
+
+            It should_be_have_a_list_of_commands = () =>
+                IOC.retrieve.an<IEnumerable<RequestCommand>>().ShouldNotBeEmpty();
+
         }
     }
 }

@@ -62,8 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="infrastructure\containers\basic\DefaultContainer.cs" />
+    <Compile Include="infrastructure\containers\basic\DefaultResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyCreationException.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\DependencyResolverNotFoundException.cs" />
     <Compile Include="infrastructure\containers\basic\FunctionalDependencyResolver.cs" />
     <Compile Include="infrastructure\containers\basic\ResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\Container.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="model\Product.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
+    <Compile Include="tasks\startup\stubs\StubResolverDictionary.cs" />
     <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />

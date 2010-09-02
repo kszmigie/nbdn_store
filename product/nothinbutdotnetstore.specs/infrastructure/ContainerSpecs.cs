@@ -97,5 +97,32 @@ namespace nothinbutdotnetstore.specs.infrastructure
              static ResolverRegistry resolver_registry;
              static Exception inner_exception;
          }
+
+         [Subject(typeof(DefaultContainer))]
+         public class when_getting_a_dependency_and_the_resolver_cannot_be_found : concern
+         {
+             Establish c = () =>
+             {
+                 dependency_resolver = an<DependencyResolver>();
+                 inner_exception = new Exception();
+                 resolver_registry = the_dependency<ResolverRegistry>();
+
+                 resolver_registry.Stub(x => x.get_resolver_to_create(typeof(IDbConnection))).Return(null);
+             };
+
+             Because b = () =>
+                 catch_exception(() => sut.an<IDbConnection>());
+
+
+             It should_throw_a_dependency_resolver_not_found_exception_with_access_to_the_necessary_information = () =>
+             {
+                 var exception = exception_thrown_by_the_sut.ShouldBeAn<DependencyResolverNotFoundException>();
+                 exception.type_for_which_resolver_not_found.ShouldEqual(typeof(IDbConnection));
+             };
+
+             static DependencyResolver dependency_resolver;
+             static ResolverRegistry resolver_registry;
+             static Exception inner_exception;
+         }
      }
  }
