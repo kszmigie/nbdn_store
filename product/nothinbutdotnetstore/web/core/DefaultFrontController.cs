@@ -4,10 +4,6 @@ namespace nothinbutdotnetstore.web.core
     {
         CommandBroker command_broker;
 
-        public DefaultFrontController():this(new DefaultCommandBroker())
-        {
-        }
-
         public DefaultFrontController(CommandBroker command_broker)
         {
             this.command_broker = command_broker;

@@ -4,16 +4,16 @@ namespace nothinbutdotnetstore.infrastructure.containers.basic
 {
     public class FunctionalDependencyResolver : DependencyResolver
     {
-        private readonly Func<object> _creator;
+        Func<object> factory;
 
-        public FunctionalDependencyResolver(Func<object> creator)
+        public FunctionalDependencyResolver(Func<object> factory)
         {
-            _creator = creator;
+            this.factory = factory;
         }
 
         public object create()
         {
-            return _creator();
+            return factory();
         }
     }
 }
