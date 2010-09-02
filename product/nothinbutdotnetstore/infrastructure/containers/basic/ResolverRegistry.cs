@@ -1,4 +1,5 @@
 using System;
+using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.infrastructure.containers.basic
 {

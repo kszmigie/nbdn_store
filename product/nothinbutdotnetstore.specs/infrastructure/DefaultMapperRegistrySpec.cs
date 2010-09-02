@@ -30,7 +30,6 @@ namespace nothinbutdotnetstore.specs.infrastructure
                                        };
              private Because b = () =>  mapper = sut.get_mapper_to_map<int,string>();
 
-
              private It should_return_proper_mapper = () => mapper.ShouldEqual(expected_mapper);
              
              static IDictionary<Type, IDictionary<Type, object>> mappers_collection;

@@ -1,6 +1,4 @@
 using System;
-using System.Web;
-using nothinbutdotnetstore.web.core.stubs;
 
 namespace nothinbutdotnetstore.web.core
 {
@@ -9,15 +7,11 @@ namespace nothinbutdotnetstore.web.core
         ViewBroker view_broker;
 
         public static HttpContextRetriever retriever = () =>
-        {
-            throw new NotImplementedException("You need to set this at configuration time"); 
-        };
-
-        public WebFormRenderer():this(new DefaultViewBroker())
-        {
-            retriever = () => HttpContext.Current;
-        }
-
+                                                           {
+                                                               throw new NotImplementedException(
+                                                                   "You need to set this at configuration time");
+                                                           };
+        
         public WebFormRenderer(ViewBroker view_broker)
         {
             this.view_broker = view_broker;

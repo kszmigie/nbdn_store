@@ -27,7 +27,8 @@ namespace nothinbutdotnetstore.infrastructure
                 if (subDict.ContainsKey(outputType))
                     return (Mapper<Input, Output>)subDict[outputType];
             }
-            throw new ApplicationException("Mapper not found for input");
+            throw new ApplicationException(string.Format("Mapper not found for types, Input: {0}, Output: {1}",
+                                                         typeof (Input), typeof (Output)));
         }
     }
 }
