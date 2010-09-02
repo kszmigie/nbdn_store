@@ -24,7 +24,7 @@ namespace nothinbutdotnetstore.specs.web
                 mapping_gateway = the_dependency<MappingGateway>();
 
                 provide_a_basic_sut_constructor_argument(payload);
-
+                provide_a_basic_sut_constructor_argument("page");
                 mapping_gateway.Stub(x => x.map<NameValueCollection,TheInputModel>(payload)).Return(the_model);
             };
 
