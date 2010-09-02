@@ -10,7 +10,7 @@
              {%>
             <tr class="ListItem">
                		 <td>                     
-                        <%=department.name%>
+                        <a href="~/views/DepartmentBrowser.aspx&'<%=department.name%>'"><%=department.name%></a>
                 	</td>
            	 </tr>        
              <%

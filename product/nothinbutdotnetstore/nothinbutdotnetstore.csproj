@@ -80,12 +80,12 @@
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestFactory.cs" />
+    <Compile Include="web\core\DefaultViewBroker.cs" />
     <Compile Include="web\core\DefaultViewFor.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="web\core\HttpContextRetriever.cs" />
     <Compile Include="infrastructure\MappingGateway.cs" />
-    <Compile Include="web\core\stubs\StubViewBroker.cs" />
     <Compile Include="web\core\ViewReporting.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
     <Compile Include="web\core\Renderer.cs" />
@@ -125,6 +125,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="backlog\Backlog.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="infrastructure\containers\structuremap\" />

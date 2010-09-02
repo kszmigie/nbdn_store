@@ -1,6 +1,5 @@
 using System;
 using System.Web;
-using nothinbutdotnetstore.web.core.stubs;
 
 namespace nothinbutdotnetstore.web.core
 {
@@ -12,11 +11,6 @@ namespace nothinbutdotnetstore.web.core
         {
             throw new NotImplementedException("You need to set this at configuration time"); 
         };
-
-        public WebFormRenderer():this(new StubViewBroker())
-        {
-            retriever = () => HttpContext.Current;
-        }
 
         public WebFormRenderer(ViewBroker view_broker)
         {
