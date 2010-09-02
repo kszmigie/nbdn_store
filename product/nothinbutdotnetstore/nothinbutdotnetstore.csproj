@@ -113,6 +113,7 @@
     </Compile>
     <Compile Include="web\core\ViewBroker.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewProducts.cs" />
+    <Compile Include="web\application\Url.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -135,12 +136,12 @@
     <Content Include="backlog\Backlog.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="backlog\Backlog.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="infrastructure\containers\structuremap\" />
     <Folder Include="infrastructure\containers\windsor\" />
     <Folder Include="tasks\stubs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="backlog\Backlog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
