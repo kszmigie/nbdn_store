@@ -69,6 +69,7 @@
     <Compile Include="infrastructure\containers\Container.cs" />
     <Compile Include="infrastructure\containers\ContainerResolver.cs" />
     <Compile Include="infrastructure\containers\IOC.cs" />
+    <Compile Include="infrastructure\DefaultMapperRegistry.cs" />
     <Compile Include="infrastructure\DefaultMappingGateway.cs" />
     <Compile Include="infrastructure\Mapper.cs" />
     <Compile Include="infrastructure\MapperRegistry.cs" />
