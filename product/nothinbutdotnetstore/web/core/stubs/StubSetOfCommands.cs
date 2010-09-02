@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.web.core.stubs
 {
@@ -13,8 +12,7 @@ namespace nothinbutdotnetstore.web.core.stubs
 
         public IEnumerator<RequestCommand> GetEnumerator()
         {
-            yield return new DefaultRequestCommand(x => true,
-                                                   new ViewMainDepartments());
+            yield break;
         }
     }
 }

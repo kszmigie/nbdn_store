@@ -61,15 +61,30 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="infrastructure\containers\basic\DefaultContainer.cs" />
+    <Compile Include="infrastructure\containers\basic\DependencyCreationException.cs" />
+    <Compile Include="infrastructure\containers\basic\DependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\FunctionalDependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\ResolverRegistry.cs" />
+    <Compile Include="infrastructure\containers\Container.cs" />
+    <Compile Include="infrastructure\containers\ContainerResolver.cs" />
+    <Compile Include="infrastructure\containers\IOC.cs" />
+    <Compile Include="infrastructure\DefaultMappingGateway.cs" />
+    <Compile Include="infrastructure\Mapper.cs" />
+    <Compile Include="infrastructure\MapperRegistry.cs" />
     <Compile Include="model\Department.cs" />
     <Compile Include="model\Product.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
+    <Compile Include="tasks\startup\Startup.cs" />
     <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
+    <Compile Include="web\core\DefaultRequest.cs" />
+    <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\DefaultViewFor.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="web\core\HttpContextRetriever.cs" />
+    <Compile Include="infrastructure\MappingGateway.cs" />
     <Compile Include="web\core\stubs\StubViewBroker.cs" />
     <Compile Include="web\core\ViewReporting.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
@@ -110,6 +125,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="infrastructure\containers\structuremap\" />
+    <Folder Include="infrastructure\containers\windsor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

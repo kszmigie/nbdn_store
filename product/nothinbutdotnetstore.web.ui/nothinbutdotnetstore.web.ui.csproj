@@ -51,10 +51,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="views\DepartmentBrowser.aspx.cs">
-      <DependentUpon>DepartmentBrowser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="views\Store.master.cs">
       <DependentUpon>Store.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
