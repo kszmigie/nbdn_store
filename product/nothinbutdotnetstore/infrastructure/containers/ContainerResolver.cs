@@ -1,4 +1,4 @@
 namespace nothinbutdotnetstore.infrastructure.containers
 {
-    public delegate Container ContainerResolver;
+    public delegate Container ContainerResolver();
 }
