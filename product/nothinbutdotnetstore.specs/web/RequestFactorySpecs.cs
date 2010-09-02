@@ -26,10 +26,10 @@ namespace nothinbutdotnetstore.specs.web
             private Establish c = () =>
                                   {
                                       context = ObjectMother.create_http_context();
-                                      input_model= new InputModel();
+                                      input_model = an<InputModel>();
 
                                       var mapping_gateway = the_dependency<MappingGateway>();
-                                      mapping_gateway.Stub(m => m.map<NameValueCollection, InputModel>(context.Request.QueryString)).Return(input_model);
+                                      mapping_gateway.Stub(m => m.map<NameValueCollection, InputModel>(context.Request.Params)).Return(input_model);
                                   };
             
             private Because b = () =>
@@ -43,7 +43,7 @@ namespace nothinbutdotnetstore.specs.web
             private static Request request;
 
 
-            private class InputModel
+            public interface InputModel
             {
             } 
         }
