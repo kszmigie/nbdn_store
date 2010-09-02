@@ -14,7 +14,9 @@ namespace nothinbutdotnetstore.web.core.stubs
         {
             this.set_of_commands = new List<RequestCommand>();
 
-            set_of_commands.Add(new DefaultRequestCommand(request => true, new ViewMainDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(), IOC.retrieve.an<Renderer>())));
+            set_of_commands.Add(new DefaultRequestCommand(request => request.page_name.ToLower() == typeof(ViewMainDepartments).Name.ToLower(), new ViewMainDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(), IOC.retrieve.an<Renderer>())));
+            set_of_commands.Add(new DefaultRequestCommand(request => request.page_name.ToLower() == typeof(ViewSubDepartments).Name.ToLower(), new ViewSubDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(), IOC.retrieve.an<Renderer>())));
+            set_of_commands.Add(new DefaultRequestCommand(request => request.page_name.ToLower() == typeof(ViewProducts).Name.ToLower(), new ViewProducts(IOC.retrieve.an<CatalogBrowsingTasks>(), IOC.retrieve.an<Renderer>())));
         }
 
         IEnumerator IEnumerable.GetEnumerator()

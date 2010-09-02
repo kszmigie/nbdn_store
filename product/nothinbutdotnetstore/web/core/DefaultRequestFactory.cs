@@ -14,7 +14,7 @@ namespace nothinbutdotnetstore.web.core
 
         public Request create_from(HttpContext context)
         {
-            return new DefaultRequest(mapping_gateway, context.Request.Params);
+            return new DefaultRequest(mapping_gateway, context.Request.Params, context.Request.Path);
         }
     }
 }

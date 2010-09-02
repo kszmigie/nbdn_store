@@ -61,7 +61,6 @@ namespace nothinbutdotnetstore.specs.web
             private static IEnumerable<Department> sub_departments;
             private static IEnumerable<Department> the_sub_departments;
             private static Department requested_department;
-            private static Repository _repository;
         }
 
         [Subject(typeof(DefaultCatalogBrowsingTasks))]
