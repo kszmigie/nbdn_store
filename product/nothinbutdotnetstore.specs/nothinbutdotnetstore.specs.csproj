@@ -82,12 +82,12 @@
     <Compile Include="infrastructure\MappingGatewaySpecs.cs" />
     <Compile Include="tasks\StartupSpecs.cs" />
     <Compile Include="utility\ObjectMother.cs" />
+    <Compile Include="web\CatalogBrowsingTasksSpecs.cs" />
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
     <Compile Include="web\RequestFactorySpecs.cs" />
     <Compile Include="web\RequestSpecs.cs" />
     <Compile Include="web\ViewProductsSpecs.cs" />
-    <Compile Include="web\ViewReportSpecs.cs" />
     <Compile Include="web\ViewSubDepartmentsSpecs.cs" />
     <Compile Include="web\FrontControllerSpecs.cs" />
     <Compile Include="web\RendererSpecs.cs" />

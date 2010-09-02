@@ -42,6 +42,6 @@ namespace nothinbutdotnetstore.specs.web
             static CatalogBrowsingTasks default_catalog_browsing_tasks;
             static Department department;
             static Renderer renderer;
-        }
+        } 
     }
 }

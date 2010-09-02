@@ -75,8 +75,8 @@
     <Compile Include="model\Department.cs" />
     <Compile Include="model\Product.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
+    <Compile Include="tasks\DefaultCatalogBrowsingTasks.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
-    <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestFactory.cs" />
@@ -86,7 +86,6 @@
     <Compile Include="web\core\HttpContextRetriever.cs" />
     <Compile Include="infrastructure\MappingGateway.cs" />
     <Compile Include="web\core\stubs\StubViewBroker.cs" />
-    <Compile Include="web\core\ViewReporting.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
     <Compile Include="web\core\Renderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartments.cs" />
@@ -129,6 +128,10 @@
   <ItemGroup>
     <Folder Include="infrastructure\containers\structuremap\" />
     <Folder Include="infrastructure\containers\windsor\" />
+    <Folder Include="tasks\stubs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="backlog\Backlog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
