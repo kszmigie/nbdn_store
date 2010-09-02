@@ -64,6 +64,7 @@
     <Compile Include="infrastructure\containers\basic\DefaultContainer.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyCreationException.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\FunctionalDependencyResolver.cs" />
     <Compile Include="infrastructure\containers\basic\ResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\Container.cs" />
     <Compile Include="infrastructure\containers\ContainerResolver.cs" />
