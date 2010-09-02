@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Web;
 using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
@@ -24,7 +25,6 @@ namespace nothinbutdotnetstore.tasks.startup
     {
         public static void run()
         {
-
             Dictionary<Type, DependencyResolver> resolvers = new Dictionary<Type, DependencyResolver>();
 
             resolvers.add<IDictionary<Type, IDictionary<Type, object>>>(get_mappers);
@@ -43,6 +43,7 @@ namespace nothinbutdotnetstore.tasks.startup
             var c = new DefaultContainer(registry);
 
             IOC.container_resolver = () => c;
+            WebFormRenderer.retriever = () => HttpContext.Current;
         }
 
         static object get_commands()
@@ -56,7 +57,7 @@ namespace nothinbutdotnetstore.tasks.startup
 
         static object get_mappers()
         {
-            Dictionary<Type, Dictionary<Type, object>> mappers = new Dictionary<Type, Dictionary<Type, object>>();
+            IDictionary<Type, IDictionary<Type, object>> mappers = new Dictionary<Type, IDictionary<Type, object>>();
             return mappers;
 
         }
