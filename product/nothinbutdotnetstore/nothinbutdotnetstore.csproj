@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{922EF2FE-820B-4ED5-9D64-7D716E135719}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -88,7 +88,8 @@
     <Compile Include="web\core\HttpContextRetriever.cs" />
     <Compile Include="infrastructure\MappingGateway.cs" />
     <Compile Include="web\core\DefaultViewBroker.cs" />
-    <Compile Include="web\core\ViewLookup.cs" />
+    <Compile Include="web\core\DefaultViewPathRegistry.cs" />
+    <Compile Include="web\core\ViewPathRegistry.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
     <Compile Include="web\core\Renderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartments.cs" />

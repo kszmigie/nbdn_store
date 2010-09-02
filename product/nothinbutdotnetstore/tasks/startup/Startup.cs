@@ -36,7 +36,7 @@ namespace nothinbutdotnetstore.tasks.startup
         public static void run()
         {
          
-            Dictionary<Type, DependencyResolver> resolvers = new Dictionary<Type, DependencyResolver>();
+            var resolvers = new Dictionary<Type, DependencyResolver>();
 
             resolvers.add<IDictionary<Type, IDictionary<Type, object>>>(get_mappers);
             resolvers.add<MapperRegistry>(() => new DefaultMapperRegistry(IOC.retrieve.an<IDictionary<Type, IDictionary<Type, object>>>()));
@@ -47,8 +47,8 @@ namespace nothinbutdotnetstore.tasks.startup
             resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
             resolvers.add<IEnumerable<RequestCommand>>(get_commands);
 
-            resolvers.add<ViewLookup>(get_viewmappings);
-            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<ViewLookup>()));
+            resolvers.add<DefaultViewPathRegistry>(get_viewmappings);
+            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<DefaultViewPathRegistry>()));
 
 
             resolvers.add<CatalogBrowsingTasks>(() => new StubCatalogBrowsingTasks());
@@ -60,10 +60,10 @@ namespace nothinbutdotnetstore.tasks.startup
             WebFormRenderer.retriever = () => HttpContext.Current;
         }
 
-        static ViewLookup get_viewmappings()
+        static DefaultViewPathRegistry get_viewmappings()
         {
-            var mappings = new ViewLookup();
-            mappings.Add(typeof (IEnumerable<Department>), "~/views/DepartmentBrowser.aspx"); 
+            var mappings = new DefaultViewPathRegistry();
+            mappings.register_path_for<IEnumerable<Department>>( "~/views/DepartmentBrowser.aspx"); 
             return mappings;
         }
 
