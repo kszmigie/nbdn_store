@@ -10,7 +10,6 @@ using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
 using nothinbutdotnetstore.web.core;
-using nothinbutdotnetstore.web.core.stubs;
 
 namespace nothinbutdotnetstore.tasks.startup
 {
@@ -48,8 +47,8 @@ namespace nothinbutdotnetstore.tasks.startup
             resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
             resolvers.add<IEnumerable<RequestCommand>>(get_commands);
 
-            resolvers.add<IDictionary<Type, string>>(get_viewmappings);
-            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<IDictionary<Type, string>>()));
+            resolvers.add<ViewLookup>(get_viewmappings);
+            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<ViewLookup>()));
 
 
             resolvers.add<CatalogBrowsingTasks>(() => new StubCatalogBrowsingTasks());
@@ -61,9 +60,9 @@ namespace nothinbutdotnetstore.tasks.startup
             WebFormRenderer.retriever = () => HttpContext.Current;
         }
 
-        static IDictionary<Type, string> get_viewmappings()
+        static ViewLookup get_viewmappings()
         {
-            IDictionary<Type, string> mappings = new Dictionary<Type, string>();
+            var mappings = new ViewLookup();
             mappings.Add(typeof (IEnumerable<Department>), "~/views/DepartmentBrowser.aspx"); 
             return mappings;
         }

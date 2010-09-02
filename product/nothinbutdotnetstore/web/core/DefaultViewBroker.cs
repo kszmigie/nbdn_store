@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Compilation;
-using nothinbutdotnetstore.model;
 
-namespace nothinbutdotnetstore.web.core.stubs
+namespace nothinbutdotnetstore.web.core
 {
     public class DefaultViewBroker : ViewBroker
     {
 
-        IDictionary<Type, string> viewsLookup;
+        ViewLookup viewsLookup;
 
-        public static Func<string, Type, object> PageFactory =
-            (path, type) => BuildManager.CreateInstanceFromVirtualPath(path, type);
+        public static Func<string, Type, object> page_factory = (path, type) => BuildManager.CreateInstanceFromVirtualPath(path, type);
 
         private Type _type;
 
-        public DefaultViewBroker(IDictionary<Type, string> lookup)
+        public DefaultViewBroker(ViewLookup lookup)
         {
             viewsLookup = lookup;
         }
@@ -33,7 +31,7 @@ namespace nothinbutdotnetstore.web.core.stubs
                 throw new ApplicationException(String.Format("View for {0} not found", _type.ToString()), ex);
             }
             //"~/views/DepartmentBrowser.aspx"
-            object item = PageFactory(viewPath, typeof(ViewFor<ViewModel>));
+            object item = page_factory(viewPath, typeof(ViewFor<ViewModel>));
             return (ViewFor<ViewModel>)item;
         }
     }

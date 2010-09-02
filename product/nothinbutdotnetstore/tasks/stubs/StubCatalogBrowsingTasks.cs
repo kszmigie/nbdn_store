@@ -17,7 +17,11 @@ namespace nothinbutdotnetstore.tasks.stubs
         static Department meats_beef;
         static Department meats_rodent;
 
+        static Product rat;
+        static Product mouse;
+
         static List<Department> all_departments = new List<Department>();
+        static List<Product> all_product = new List<Product>();
 
         static int next_id
         {
@@ -45,6 +49,15 @@ namespace nothinbutdotnetstore.tasks.stubs
                                       meats_beef,
                                       meats_rodent
                                   };
+
+            rat = new Product {description = "Rat", price = 3, department_id = meats_rodent.id};
+            mouse = new Product {description = "Mouse", price = 3, department_id = meats_rodent.id};
+
+            all_product = new List<Product>
+                              {
+                                  rat, mouse
+                              };
+
         }
 
 
@@ -61,7 +74,7 @@ namespace nothinbutdotnetstore.tasks.stubs
 
         public IEnumerable<Product> get_all_products_in(Department dept)
         {
-            throw new NotImplementedException();
+            return all_product.Where(p => p.department_id == dept.id);
         }
     }
 }

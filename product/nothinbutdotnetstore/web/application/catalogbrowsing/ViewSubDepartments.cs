@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks;
 using nothinbutdotnetstore.web.core;
@@ -17,7 +18,8 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
 
         public void process(Request request)
         {
-            renderer.render(catalog_browsing_tasks.get_sub_departments_in(request.map<Department>()));
+            IEnumerable<Department> subDepartmentsIn = catalog_browsing_tasks.get_sub_departments_in(request.map<Department>());
+            renderer.render(subDepartmentsIn);
         }
     }
 }

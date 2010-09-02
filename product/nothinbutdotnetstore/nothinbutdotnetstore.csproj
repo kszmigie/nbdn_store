@@ -87,7 +87,8 @@
     </Compile>
     <Compile Include="web\core\HttpContextRetriever.cs" />
     <Compile Include="infrastructure\MappingGateway.cs" />
-    <Compile Include="web\core\stubs\DefaultViewBroker.cs" />
+    <Compile Include="web\core\DefaultViewBroker.cs" />
+    <Compile Include="web\core\ViewLookup.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
     <Compile Include="web\core\Renderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartments.cs" />

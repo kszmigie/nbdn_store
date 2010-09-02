@@ -1,6 +1,7 @@
 <%@ MasterType VirtualPath="Store.master" %>
-<%@ Page Language="c#" AutoEventWireup="true" 
-Inherits="System.Web.UI.Page" MasterPageFile="Store.master" %>
+<%@ Page Language="c#" AutoEventWireup="true"
+Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master"
+%>
 
 
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
