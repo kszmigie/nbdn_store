@@ -10,7 +10,7 @@ namespace nothinbutdotnetstore.tasks
         private ProductRepository products;
         private DepartmentRepository departments;
 
-        public DefaultCatalogBrowsingTasks(DepartmentRepository departments, ProductRepository products)
+        public DefaultCatalogBrowsingTasks(IEnumerable<Department> departments, IEnumerable<Product> products)
         {
             this.departments = departments;
             this.products = products;
