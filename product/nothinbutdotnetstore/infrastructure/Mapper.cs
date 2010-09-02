@@ -1,8 +1,7 @@
 namespace nothinbutdotnetstore.infrastructure
 {
-    public interface Mapper
+    public interface Mapper<Input,Output>
     {
-        bool can_map<Input, Output>(Input input);
-        Output map<Input, Output>(Input input);
+        Output map(Input input);
     }
 }
