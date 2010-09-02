@@ -13,13 +13,14 @@ namespace nothinbutdotnetstore.infrastructure.containers.basic
 
         public Dependency an<Dependency>()
         {
+            var resolver = resolver_registry.get_resolver_to_create(typeof(Dependency));
             try
             {
-                return (Dependency)resolver_registry.get_resolver_to_create(typeof(Dependency)).create();
-            } catch(Exception e)
+                return (Dependency)resolver.create();
+            }
+            catch(Exception e)
             {
-                var creationException = new DependencyCreationException(typeof(Dependency), e);
-                throw creationException;
+                throw new DependencyCreationException(typeof(Dependency), e);
             }
         }
     }
