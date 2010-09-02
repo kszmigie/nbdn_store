@@ -11,26 +11,26 @@ namespace nothinbutdotnetstore.infrastructure
 
     class DefaultMapperRegistry : MapperRegistry
     {
-        IDictionary<Type, IDictionary<Type, object>> list_of_mappers;
+        IDictionary<Type, IDictionary<Type, Func<object>>> list_of_mappers;
 
-        public DefaultMapperRegistry(IDictionary<Type, IDictionary<Type, object>> list_of_mappers)
+        public DefaultMapperRegistry(IDictionary<Type, IDictionary<Type, Func<object>>> list_of_mappers)
         {
             this.list_of_mappers = list_of_mappers;
         }
 
         public Mapper<Input, Output> get_mapper_to_map<Input, Output>()
         {
-            IDictionary<Type, object> mappers_for_input_type;
+            IDictionary<Type, Func<object>> mappers_for_input_type;
             list_of_mappers.TryGetValue(typeof (Input), out mappers_for_input_type);
 
             //todo: throw exception if null
 
-            object mapper;
+            Func<object> mapper;
             mappers_for_input_type.TryGetValue(typeof (Output), out mapper);
 
             //todo: throw exception if null
 
-            return (Mapper<Input, Output>) mapper;
+            return (Mapper<Input, Output>) mapper();
         }
     }
 }
