@@ -26,7 +26,7 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
                     departments.Add(sub_department);
                     for (int productCounter = 0; productCounter < 10; productCounter++)
                     {
-                        products.Add(new Product{name = string.Format("Product_{0}{1}{2}", departmentCounter, subDepartmentCounter, productCounter)});
+                        products.Add(new Product{name = string.Format("Product_{0}{1}{2}", departmentCounter, subDepartmentCounter, productCounter), parent_department = sub_department});
                     }
                 }
             }
