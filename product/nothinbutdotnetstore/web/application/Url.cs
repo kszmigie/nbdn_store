@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
+using nothinbutdotnetstore.model;
+
+namespace nothinbutdotnetstore.web.application
+{//<a href=<%=Server.UrlEncode(Url.For(department))%>"?department=<%Server.UrlEncode(department.name)%>"><%=department.name%></a>
+    public class Url
+    {
+        private static IEnumerable<Product> _productRepository;
+
+        public Url(IEnumerable<Product> productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
+        public static string For(Department department)
+        {
+            if (department.has_products)
+            {
+                return "~/ViewProducts?Department=''" + department.name;
+            }
+
+            return "~/ViewSubDepartments?Department=''" + department.name;
+        }
+    }
+}
