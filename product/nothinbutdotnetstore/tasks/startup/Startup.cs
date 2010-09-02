@@ -5,6 +5,7 @@ using System.Web;
 using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
+using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web;
 using nothinbutdotnetstore.web.application.catalogbrowsing;

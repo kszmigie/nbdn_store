@@ -7,13 +7,10 @@ namespace nothinbutdotnetstore.web
 {
     public class DepartmentMapper : Mapper<NameValueCollection, Department>
     {
-        public const string name_tag = "name";
+        public const string id_tag = "department_id";
         public Department map(NameValueCollection input)
         {
-            return new Department
-                       {
-                           name = input[name_tag]
-                       };
+            return new Department(Convert.ToInt32(input[id_tag]));
         }
     }
 }

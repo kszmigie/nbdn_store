@@ -24,7 +24,7 @@ namespace nothinbutdotnetstore.specs.web
                 request = an<Request>();
                 default_catalog_browsing_tasks = the_dependency<CatalogBrowsingTasks>();
                 all_sub_departments = new List<Department>();
-                department = new Department();
+                department = new Department(0);
 
                 request.Stub(x => x.map<Department>()).Return(department);
                 default_catalog_browsing_tasks.Stub(x => x.get_sub_departments_in(department)).Return(all_sub_departments);

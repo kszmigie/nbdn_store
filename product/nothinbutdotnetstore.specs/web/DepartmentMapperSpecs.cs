@@ -22,14 +22,14 @@ namespace nothinbutdotnetstore.specs.web
              Establish c = () =>
                  {
                      name_values = new NameValueCollection();
-                     name_values[DepartmentMapper.name_tag] = "blah";
+                     name_values[DepartmentMapper.id_tag] = "123";
                  };
 
              Because b = () =>
                  result = sut.map(name_values);
 
              It should_return_a_valid_object_from_the_data = () =>
-                 result.name.ShouldEqual("blah");
+                 result.id.ShouldEqual(123);
 
              static Department result;
              static NameValueCollection name_values;

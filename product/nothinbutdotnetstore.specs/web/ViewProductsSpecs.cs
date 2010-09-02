@@ -26,7 +26,7 @@ namespace nothinbutdotnetstore.specs.web
                 request = an<Request>();
 
                 all_dept_products = new List<Product>();
-                department = new Department();
+                department = new Department(0);
 
                 request.Stub(x => x.map<Department>()).Return(department);
                 default_catalog_browsing_tasks.Stub(x => x.get_all_products_in(department)).Return(all_dept_products);
