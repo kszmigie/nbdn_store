@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using nothinbutdotnetstore.model;
+using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.web.application
 {//<a href=<%=Server.UrlEncode(Url.For(department))%>"?department=<%Server.UrlEncode(department.name)%>"><%=department.name%></a>
@@ -17,10 +18,10 @@ namespace nothinbutdotnetstore.web.application
         {
             if (department.has_products)
             {
-                return "~/ViewProducts?Department=''" + department.name;
+                return "~/" + typeof(ViewProducts).Name + "?Department=''" + department.name;
             }
 
-            return "~/ViewSubDepartments?Department=''" + department.name;
+            return "~/" + typeof(ViewSubDepartments).Name + "?Department=''" + department.name;
         }
     }
 }
