@@ -18,10 +18,10 @@ namespace nothinbutdotnetstore.web.application
         {
             if (department.has_products)
             {
-                return "~/" + typeof(ViewProducts).Name + "?Department=''" + department.name;
+                return typeof(ViewProducts).Name + ".store?Department=" + department.name;
             }
 
-            return "~/" + typeof(ViewSubDepartments).Name + "?Department=''" + department.name;
+            return typeof(ViewSubDepartments).Name + ".store?Department=" + department.name;
         }
     }
 }

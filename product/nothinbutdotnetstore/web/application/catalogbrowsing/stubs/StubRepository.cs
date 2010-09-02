@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using nothinbutdotnetstore.model;
 using nothinbutdotnetstore.tasks;
+using System.Linq;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
 {
@@ -17,15 +18,15 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
 
             for (int departmentCounter = 0; departmentCounter < 10; departmentCounter++)
             {
-                var department = new Department{name = string.Format("Department {0}", departmentCounter)};
+                var department = new Department{name = string.Format("Department_{0}", departmentCounter)};
                 departments.Add(department);
                 for (int subDepartmentCounter = 0; subDepartmentCounter < 5; subDepartmentCounter++)
                 {
-                    var sub_department = new Department { name = string.Format("Department {0}{1}", departmentCounter, subDepartmentCounter),parent_department=department };
+                    var sub_department = new Department { name = string.Format("Department_{0}{1}", departmentCounter, subDepartmentCounter),parent_department=department };
                     departments.Add(sub_department);
                     for (int productCounter = 0; productCounter < 10; productCounter++)
                     {
-                        products.Add(new Product{name = string.Format("Product {0}{1}{2}", departmentCounter, subDepartmentCounter, productCounter)});
+                        products.Add(new Product{name = string.Format("Product_{0}{1}{2}", departmentCounter, subDepartmentCounter, productCounter)});
                     }
                 }
             }
@@ -45,6 +46,11 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
             {
                 yield return product;
             }
+        }
+
+        public Department get_department(string department_name)
+        {
+            return departments.First(department => department.name == department_name);
         }
     }
 }

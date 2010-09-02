@@ -24,9 +24,10 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
                     {typeof (RequestFactory), new FunctionalDependencyResolver(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()))},
                     {typeof (MappingGateway), new FunctionalDependencyResolver(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()))},
                     {typeof (MapperRegistry), new FunctionalDependencyResolver(() => new DefaultMapperRegistry(IOC.retrieve.an<IDictionary<Type, IDictionary<Type, Func<object>>>>()))},
-                    {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new DefaultCatalogBrowsingTasks(new StubRepository()))},
+                    {typeof (CatalogBrowsingTasks), new FunctionalDependencyResolver(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()))},
                     {typeof (Renderer), new FunctionalDependencyResolver(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()))},
                     {typeof (ViewBroker), new FunctionalDependencyResolver(() => new DefaultViewBroker())},
+                    {typeof (Repository), new FunctionalDependencyResolver(()=> new StubRepository())},
                     {typeof (IDictionary<Type, IDictionary<Type, Func<object>>>), new FunctionalDependencyResolver(() => StubSetOfMappers.set_of_mappers)}
                 };
 

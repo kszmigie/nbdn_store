@@ -13,7 +13,7 @@
              {%>
             <tr class="ListItem">
                		 <td>                     
-                        <a href=<%=Server.UrlEncode(Url.For(department))%>> <%=department.name%></a>
+                        <a href="<%=(Url.For(department))%>"> <%=department.name%></a>
                 	</td>
            	 </tr>      
              <%
