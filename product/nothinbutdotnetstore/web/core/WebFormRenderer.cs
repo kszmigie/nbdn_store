@@ -13,7 +13,7 @@ namespace nothinbutdotnetstore.web.core
             throw new NotImplementedException("You need to set this at configuration time"); 
         };
 
-        public WebFormRenderer():this(new StubViewBroker())
+        public WebFormRenderer():this(new DefaultViewBroker())
         {
             retriever = () => HttpContext.Current;
         }

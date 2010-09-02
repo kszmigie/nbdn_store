@@ -83,6 +83,7 @@
     <Compile Include="infrastructure\MappingGatewaySpecs.cs" />
     <Compile Include="tasks\StartupSpecs.cs" />
     <Compile Include="utility\ObjectMother.cs" />
+    <Compile Include="ViewBrokerSpec.cs" />
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
     <Compile Include="web\RequestFactorySpecs.cs" />

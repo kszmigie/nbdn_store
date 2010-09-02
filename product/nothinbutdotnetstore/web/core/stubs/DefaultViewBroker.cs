@@ -5,7 +5,7 @@ using nothinbutdotnetstore.model;
 
 namespace nothinbutdotnetstore.web.core.stubs
 {
-    public class StubViewBroker : ViewBroker
+    public class DefaultViewBroker : ViewBroker
     {
         public ViewFor<ViewModel> get_view_for<ViewModel>()
         {

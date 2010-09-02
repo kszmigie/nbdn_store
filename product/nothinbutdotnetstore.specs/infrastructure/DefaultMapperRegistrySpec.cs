@@ -19,10 +19,13 @@ namespace nothinbutdotnetstore.specs.infrastructure
              private Establish c = () =>
                                        {
                                            expected_mapper = an<Mapper<int, string>>();
-                                           mappers_collection = new Dictionary<Type, Dictionary<Type, object>>();
-                                           subDict = new Dictionary<Type,object>();
-                                           subDict.Add(typeof(string),expected_mapper);
+                                           
+                                           subDict = new Dictionary<Type, object>();
+                                           subDict.Add(typeof(string), expected_mapper);
+
+                                           mappers_collection = new Dictionary<Type, IDictionary<Type, object>>();
                                            mappers_collection.Add(typeof (int), subDict);
+
                                            provide_a_basic_sut_constructor_argument(mappers_collection);
                                        };
              private Because b = () =>  mapper = sut.get_mapper_to_map<int,string>();
@@ -30,8 +33,8 @@ namespace nothinbutdotnetstore.specs.infrastructure
 
              private It should_return_proper_mapper = () => mapper.ShouldEqual(expected_mapper);
              
-             static Dictionary<Type, Dictionary<Type, object>> mappers_collection;
-             static Dictionary<Type, object> subDict;
+             static IDictionary<Type, IDictionary<Type, object>> mappers_collection;
+             static IDictionary<Type, object> subDict;
              private static Mapper<int,string> mapper;
              private static Mapper<int,string> expected_mapper;
          }

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace nothinbutdotnetstore.infrastructure
 {
     public class DefaultMapperRegistry : MapperRegistry
     {
         private readonly IDictionary<Type, IDictionary<Type, object>> mappers;
+        private Type inputType;
+        private Type outputType;
 
         public DefaultMapperRegistry(IDictionary<Type, IDictionary<Type, object>> mappers)
         {
@@ -15,13 +18,14 @@ namespace nothinbutdotnetstore.infrastructure
 
         public Mapper<Input, Output> get_mapper_to_map<Input, Output>()
         {
-            if (mappers.ContainsKey(typeof (Input)))
+            
+            inputType = typeof(Input);
+            outputType = typeof(Output);
+            if (mappers.ContainsKey(inputType))
             {
-                var subDict = mappers[typeof (Input)];
-                if (subDict.ContainsKey(typeof(Output)))
-                {
-                    return (Mapper<Input,Output>) subDict[typeof(Output)];
-                }
+                var subDict = mappers[inputType];
+                if (subDict.ContainsKey(outputType))
+                    return (Mapper<Input, Output>)subDict[outputType];
             }
             throw new ApplicationException("Mapper not found for input");
         }
