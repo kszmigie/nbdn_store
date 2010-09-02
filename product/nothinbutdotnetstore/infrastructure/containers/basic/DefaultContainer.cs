@@ -19,6 +19,10 @@ namespace nothinbutdotnetstore.infrastructure.containers.basic
         public object an(Type dependency)
         {
             var resolver = resolver_registry.get_resolver_to_create(dependency);
+
+            if (resolver == null)
+                throw new DependencyResolverNotFoundException(dependency);
+
             try
             {
                 return resolver.create();
@@ -26,7 +30,7 @@ namespace nothinbutdotnetstore.infrastructure.containers.basic
             catch (Exception e)
             {
                 throw new DependencyCreationException(dependency, e);
-            }
+            } 
         }
     }
 }

@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="infrastructure\ContainerSpecs.cs" />
-    <Compile Include="infrastructure\DefaultMapperRegistrySpec.cs" />
+    <Compile Include="infrastructure\DefaultMapperRegistrySpecs.cs" />
     <Compile Include="infrastructure\FunctionalDependencyResolverSpecs.cs" />
     <Compile Include="infrastructure\IOCSpecs.cs" />
     <Compile Include="infrastructure\ResolverRegistrySpecs.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="tasks\StartupSpecs.cs" />
     <Compile Include="utility\ObjectMother.cs" />
     <Compile Include="ViewBrokerSpec.cs" />
+    <Compile Include="web\CatalogBrowsingTasksSpecs.cs" />
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
     <Compile Include="web\DepartmentMapperSpecs.cs" />

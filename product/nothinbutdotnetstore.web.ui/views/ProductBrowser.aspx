@@ -1,8 +1,12 @@
 <%@ MasterType VirtualPath="Store.master" %>
+<<<<<<< HEAD
 <%@ Page Language="c#" AutoEventWireup="true"
 Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master"
 %>
 
+=======
+<%@ Page Language="c#" AutoEventWireup="true" Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master" %>
+>>>>>>> hack
 
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
     <form></form>
@@ -20,17 +24,20 @@ Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Gen
                 </thead>
     
 		<!-- for each product in the department -->
-                <tr class="nonShadedRow">                    
-                    <td class="ListItem">                    
-                        <a href='Replace with a link to the detail page for the product'>Replace with product name</a>
-                    </td>
-                    <td>Replace with product description</td>
-                    <td><input type="text" class="normalTextBox" value="1" /></td>
-                    <td>Replace with the price of the product</td>               
-                    <td><input type="checkbox" class="normalCheckBox" /></td>
-                    <td><asp:button id="addToCartButton" runat="server" Text="Add To cart"/></td>
-                </tr>
-    						
+		    <%
+        	    foreach (var product in model)
+             {%>
+            <tr class="nonShadedRow">
+               		 <td class="ListItem">                     
+                        <a href="~/views/ProductDetail.aspx"><%=product.name%></a>
+                        <br /><br />
+                        <%= product.description %>
+                        <br /><br />
+                        <%= product.price %>
+                	</td>
+           	 </tr>        
+             <%
+             }%>    						
     	</table>	
 								<table>
 									<tr>

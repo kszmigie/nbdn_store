@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{922EF2FE-820B-4ED5-9D64-7D716E135719}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -65,7 +65,9 @@
     <Compile Include="infrastructure\containers\basic\DefaultResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyCreationException.cs" />
     <Compile Include="infrastructure\containers\basic\DependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\DependencyResolverNotFoundException.cs" />
     <Compile Include="infrastructure\containers\basic\FunctionalDependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\MissingDependencyResolver.cs" />
     <Compile Include="infrastructure\containers\basic\ResolverRegistry.cs" />
     <Compile Include="infrastructure\containers\Container.cs" />
     <Compile Include="infrastructure\containers\ContainerResolver.cs" />
@@ -77,17 +79,19 @@
     <Compile Include="model\Department.cs" />
     <Compile Include="model\Product.cs" />
     <Compile Include="tasks\CatalogBrowsingTasks.cs" />
+    <Compile Include="tasks\DefaultCatalogBrowsingTasks.cs" />
+    <Compile Include="tasks\Repository.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
-    <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
+    <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestFactory.cs" />
+    <Compile Include="web\core\DefaultViewBroker.cs" />
     <Compile Include="web\core\DefaultViewFor.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="web\core\HttpContextRetriever.cs" />
     <Compile Include="infrastructure\MappingGateway.cs" />
-    <Compile Include="web\core\DefaultViewBroker.cs" />
     <Compile Include="web\core\DefaultViewPathRegistry.cs" />
     <Compile Include="web\core\ViewPathRegistry.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
@@ -110,6 +114,7 @@
     <Compile Include="web\core\ViewBroker.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewProducts.cs" />
     <Compile Include="web\application\DepartmentMapper.cs" />
+    <Compile Include="web\application\Url.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -129,8 +134,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="backlog\Backlog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="backlog\Backlog.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="infrastructure\containers\structuremap\" />
     <Folder Include="infrastructure\containers\windsor\" />
+    <Folder Include="tasks\stubs\" />
+    <Folder Include="web\core\stubs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

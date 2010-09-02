@@ -1,14 +1,14 @@
-
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Web;
 using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
 using nothinbutdotnetstore.model;
-using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
+using nothinbutdotnetstore.web.application.catalogbrowsing.stubs;
 using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.tasks.startup
@@ -35,26 +35,28 @@ namespace nothinbutdotnetstore.tasks.startup
     {
         public static void run()
         {
-         
             var resolvers = new Dictionary<Type, DependencyResolver>();
 
             resolvers.add<IDictionary<Type, IDictionary<Type, object>>>(get_mappers);
-            resolvers.add<MapperRegistry>(() => new DefaultMapperRegistry(IOC.retrieve.an<IDictionary<Type, IDictionary<Type, object>>>()));
+            resolvers.add<MapperRegistry>(() => new DefaultMapperRegistry(IOC.retrieve.an<Container>()));
             resolvers.add<MappingGateway>(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()));
             resolvers.add<RequestFactory>(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()));
             resolvers.add<FrontController>(() => new DefaultFrontController(IOC.retrieve.an<CommandBroker>()));
             resolvers.add<CommandBroker>(() => new DefaultCommandBroker(IOC.retrieve.an<IEnumerable<RequestCommand>>()));
             resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
             resolvers.add<IEnumerable<RequestCommand>>(get_commands);
-
             resolvers.add<DefaultViewPathRegistry>(get_viewmappings);
             resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<DefaultViewPathRegistry>()));
+            resolvers.add<CatalogBrowsingTasks>(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()));
+            resolvers.add<Mapper<NameValueCollection, Department>>(() => new DepartmentMapper());
 
-
-            resolvers.add<CatalogBrowsingTasks>(() => new StubCatalogBrowsingTasks());
+            Repository the_repository = new StubRepository();
+            resolvers.add<Repository>(() => the_repository);
             
             ResolverRegistry registry = new DefaultResolverRegistry(resolvers);
             var c = new DefaultContainer(registry);
+
+            resolvers.add<Container>(() => c);
 
             IOC.container_resolver = () => c;
             WebFormRenderer.retriever = () => HttpContext.Current;
@@ -84,7 +86,6 @@ namespace nothinbutdotnetstore.tasks.startup
             IDictionary<Type, IDictionary<Type, object>> mappers = new Dictionary<Type, IDictionary<Type, object>>();
             mappers.add(new DepartmentMapper());
             return mappers;
-
         }
     }
 }

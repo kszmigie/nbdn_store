@@ -1,0 +1,10 @@
+Request command routing
+Mapper Registry
+
+Store.Master
+Product.aspx generic mapping - done
+Department Browser now needs to render links
+Object Model - Department, Product, 
+Project startup - Introduce Container
+
+Complete

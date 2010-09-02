@@ -11,7 +11,8 @@ namespace nothinbutdotnetstore.web.core
                                                                throw new NotImplementedException(
                                                                    "You need to set this at configuration time");
                                                            };
-        
+
+
         public WebFormRenderer(ViewBroker view_broker)
         {
             this.view_broker = view_broker;

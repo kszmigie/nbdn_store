@@ -1,7 +1,11 @@
-﻿namespace nothinbutdotnetstore.model
+﻿using System;
+
+namespace nothinbutdotnetstore.model
 {
     public class Department
     {
+        public bool has_products;
+
         public Department(int id) : this(id, "")
         {
         }
@@ -21,6 +25,11 @@
         public int parent_department_id { get; set; }
         public string name { get; set; }
 
-        public bool has_parent_department { get { return this.parent_department_id != -1; } }
+        public bool has_parent_department { get { return parent_department_id != -1; } }
+
+        public override string ToString()
+        {
+            return name ?? "(null)";
+        }
     }
 }
