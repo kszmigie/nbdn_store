@@ -23,5 +23,10 @@ namespace nothinbutdotnetstore.infrastructure.containers.basic
                 throw new DependencyCreationException(typeof(Dependency), e);
             }
         }
+
+        public object an(Type dependency)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

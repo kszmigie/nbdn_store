@@ -44,6 +44,32 @@ namespace nothinbutdotnetstore.specs.infrastructure
          }
 
          [Subject(typeof(DefaultContainer))]
+         public class when_getting_a_dependency_by_type_and_the_resolver_can_create_it : concern
+         {
+             Establish c = () =>
+             {
+                 the_connection = new SqlConnection();
+                 dependency_resolver = an<DependencyResolver>();
+                 resolver_registry = the_dependency<ResolverRegistry>();
+
+                 resolver_registry.Stub(x => x.get_resolver_to_create(typeof(IDbConnection))).Return(dependency_resolver);
+                 dependency_resolver.Stub(x => x.create()).Return(the_connection);
+             };
+
+             Because b = () =>
+                 result = sut.an(typeof(IDbConnection));
+
+
+             It should_return_the_created_dependency_to_the_client = () =>
+                 result.ShouldEqual(the_connection);
+
+             static object result;
+             static IDbConnection the_connection;
+             static DependencyResolver dependency_resolver;
+             static ResolverRegistry resolver_registry;
+         }
+
+         [Subject(typeof(DefaultContainer))]
          public class when_getting_a_dependency_and_the_resolver_for_that_dependency_throws_an_error : concern
          {
              Establish c = () =>
