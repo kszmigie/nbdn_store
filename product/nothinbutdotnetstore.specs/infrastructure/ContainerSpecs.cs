@@ -14,7 +14,7 @@ namespace nothinbutdotnetstore.specs.infrastructure
          public abstract class concern : Observes<Container,
                                              DefaultContainer>
          {
-        
+
          }
 
          [Subject(typeof(DefaultContainer))]
