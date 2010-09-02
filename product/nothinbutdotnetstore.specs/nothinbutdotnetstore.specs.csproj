@@ -76,6 +76,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="infrastructure\ContainerSpecs.cs" />
     <Compile Include="infrastructure\IOCSpecs.cs" />
     <Compile Include="infrastructure\MappingGatewaySpecs.cs" />
     <Compile Include="utility\ObjectMother.cs" />

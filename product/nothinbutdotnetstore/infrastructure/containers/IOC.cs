@@ -6,12 +6,12 @@ namespace nothinbutdotnetstore.infrastructure.containers
     {
         public static ContainerResolver container_resolver = delegate
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("This needs to be configured at startup");
         };
 
         public static Container retrieve
         {
-            get { throw new NotImplementedException(); }
+            get { return container_resolver(); }
         }
     }
 }
