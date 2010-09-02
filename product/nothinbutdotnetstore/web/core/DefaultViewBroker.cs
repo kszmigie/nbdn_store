@@ -11,7 +11,7 @@ namespace nothinbutdotnetstore.web.core
         {
             var typeName = typeof (ViewModel).Name;
 
-            string path = "DepartmentBrowser.aspx";
+            string path = "~/views/DepartmentBrowser.aspx";
             object item = BuildManager.CreateInstanceFromVirtualPath(path, typeof(ViewFor<ViewModel>));
 
             return (ViewFor<ViewModel>)item;

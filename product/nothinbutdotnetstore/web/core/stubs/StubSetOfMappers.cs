@@ -8,12 +8,13 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
 {
     public class StubSetOfMappers
     {
-        public static IDictionary<Type, IDictionary<Type, object>> set_of_mappers { get; private set; }
+        public static IDictionary<Type, IDictionary<Type, Func<object>>> set_of_mappers { get; private set; }
 
         static StubSetOfMappers()
         {
-            set_of_mappers = new Dictionary<Type, IDictionary<Type, object>>();
-            set_of_mappers.Add(typeof(NameValueCollection), new Dictionary<Type, object> {{typeof (Department), typeof (NamevalueCollectionToDepartmentmapper)}});
+            set_of_mappers = new Dictionary<Type, IDictionary<Type, Func<object>>>();
+            set_of_mappers.Add(
+                typeof(NameValueCollection), new Dictionary<Type, Func<object>> {{typeof (Department), () => new NamevalueCollectionToDepartmentmapper()}});
         }
     }
 
