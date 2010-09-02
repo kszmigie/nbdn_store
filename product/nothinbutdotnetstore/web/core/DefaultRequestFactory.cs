@@ -5,7 +5,7 @@ namespace nothinbutdotnetstore.web.core
 {
     public class DefaultRequestFactory : RequestFactory
     {
-        private MappingGateway mapping_gateway;
+        MappingGateway mapping_gateway;
 
         public DefaultRequestFactory(MappingGateway mapping_gateway)
         {
