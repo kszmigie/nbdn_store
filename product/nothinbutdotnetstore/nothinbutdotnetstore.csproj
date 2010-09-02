@@ -67,6 +67,7 @@
     <Compile Include="tasks\stubs\StubCatalogBrowsingTasks.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
+    <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\DefaultViewFor.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
