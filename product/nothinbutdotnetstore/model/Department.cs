@@ -2,7 +2,7 @@
 
 namespace nothinbutdotnetstore.model
 {
-    public class Department
+    public class Department : Identity 
     {
         public bool has_products;
 

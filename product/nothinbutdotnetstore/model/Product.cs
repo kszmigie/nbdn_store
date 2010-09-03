@@ -1,6 +1,6 @@
 namespace nothinbutdotnetstore.model
 {
-    public class Product
+    public class Product : Identity 
     {
         private Department department;
 

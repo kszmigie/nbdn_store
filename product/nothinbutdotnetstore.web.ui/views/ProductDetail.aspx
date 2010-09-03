@@ -1,8 +1,12 @@
 <%@ MasterType VirtualPath="Store.master" %>
 <%@ Page Language="c#" AutoEventWireup="true" Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master"%>
+<%@ Import Namespace="nothinbutdotnetstore.model" %>
 <%@ Import Namespace="nothinbutdotnetstore.web.application" %>
+<%@ Import Namespace="nothinbutdotnetstore.web.helpers" %>
 
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
+							
+		<%=FormField.For<Product>(model) %>					
 							<table style="WIDTH: 456px; HEIGHT: 114px" width="456">
 								<tr>
 									<td class="ListHead" id="productName" runat="server">
@@ -20,11 +24,12 @@
 											</tr>
 											<tr valign="top">
 												<td id="Td1" align="right" colspan="2" runat="server">
-													<asp:Button id="addToCartButton" runat="server" Text="Add To Cart" CssClass="NormalButton"></asp:Button></td>
+													<%=GenerateSubmit.For<Product>(model).WithText( "Add to cart").WithAction( "addToCartButton").WithClass("NormalButton").Build()%></td>
+													
 											</tr>
 										</table>
 									</td>
 								</tr>
 							</table>
-
+         </form>
 					</asp:Content>		

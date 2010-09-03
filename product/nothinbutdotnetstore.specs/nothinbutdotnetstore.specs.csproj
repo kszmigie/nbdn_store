@@ -98,6 +98,7 @@
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
     <Compile Include="web\DepartmentMapperSpecs.cs" />
+    <Compile Include="web\helpers\Form.cs" />
     <Compile Include="web\ProductMapperSpecs.cs" />
     <Compile Include="web\RequestFactorySpecs.cs" />
     <Compile Include="web\RequestSpecs.cs" />
