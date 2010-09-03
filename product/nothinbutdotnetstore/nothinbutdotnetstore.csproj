@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="infrastructure\containers\basic\AutomaticDependencyResolver.cs" />
+    <Compile Include="infrastructure\containers\basic\ConstructorSelectionStrategies.cs" />
     <Compile Include="infrastructure\containers\basic\ConstructorSelectionStrategy.cs" />
     <Compile Include="infrastructure\containers\basic\DefaultContainer.cs" />
     <Compile Include="infrastructure\containers\basic\DefaultResolverRegistry.cs" />
