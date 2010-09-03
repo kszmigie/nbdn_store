@@ -13,79 +13,89 @@ using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.tasks.startup
 {
-    internal static class StartupHelpers
+    static class StartupHelpers
     {
-        public static void add<T>(this Dictionary<Type, DependencyResolver> resolvers, Func<object> factory)
+        public static void add<T>(this IDictionary<Type, DependencyResolver> resolvers, Func<object> factory)
         {
             resolvers.Add(typeof(T), new FunctionalDependencyResolver(factory));
         }
-
-        public static void add<Input, Output>(this IDictionary<Type, IDictionary<Type, object>> mappers, Mapper<Input, Output>  mapper)
-        {
-            if (!mappers.ContainsKey(typeof(Input)))
-            {
-                mappers[typeof(Input)] = new Dictionary<Type, object>();
-            }
-            mappers[typeof (Input)][typeof (Output)] = mapper;
-        }
-
     }
 
     public class Startup
     {
+        static IDictionary<Type, DependencyResolver> resolvers = new Dictionary<Type, DependencyResolver>();
+
         public static void run()
         {
-            var resolvers = new Dictionary<Type, DependencyResolver>();
+//            Start.by<ConfigureCoreServices>()
+//                .followed_by<ConfigureInfrastructure>()
+//                .finish_by<ConfigureInfrastructure>();
+//            configure_infrastructure();
+//            configure_front_controller();
+//            configure_routes();
+//            configure_service_layer();
+//            configure_mappers();
+        }
 
-            resolvers.add<IDictionary<Type, IDictionary<Type, object>>>(get_mappers);
-            resolvers.add<MapperRegistry>(() => new DefaultMapperRegistry(IOC.retrieve.an<Container>()));
-            resolvers.add<MappingGateway>(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()));
-            resolvers.add<RequestFactory>(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()));
-            resolvers.add<FrontController>(() => new DefaultFrontController(IOC.retrieve.an<CommandBroker>()));
-            resolvers.add<CommandBroker>(() => new DefaultCommandBroker(IOC.retrieve.an<IEnumerable<RequestCommand>>()));
-            resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
-            resolvers.add<IEnumerable<RequestCommand>>(get_commands);
-            resolvers.add<DefaultViewPathRegistry>(get_viewmappings);
-            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<DefaultViewPathRegistry>()));
-            resolvers.add<CatalogBrowsingTasks>(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()));
+        static void configure_mappers()
+        {
             resolvers.add<Mapper<NameValueCollection, Department>>(() => new DepartmentMapper());
+        }
 
+        static void configure_service_layer()
+        {
+            resolvers.add<CatalogBrowsingTasks>(() => new DefaultCatalogBrowsingTasks(IOC.retrieve.an<Repository>()));
             Repository the_repository = new StubRepository();
             resolvers.add<Repository>(() => the_repository);
-            
+        }
+
+        static void configure_infrastructure()
+        {
+            resolvers.add<MapperRegistry>(() => new DefaultMapperRegistry(IOC.retrieve.an<Container>()));
+            resolvers.add<MappingGateway>(() => new DefaultMappingGateway(IOC.retrieve.an<MapperRegistry>()));
+        }
+
+        static void configure_routes()
+        {
+            resolvers.add<IEnumerable<RequestCommand>>(get_commands);
+        }
+
+        static void configure_front_controller()
+        {
+            resolvers.add<FrontController>(() => new DefaultFrontController(IOC.retrieve.an<CommandBroker>()));
+            resolvers.add<CommandBroker>(() => new DefaultCommandBroker(IOC.retrieve.an<IEnumerable<RequestCommand>>()));
+            resolvers.add<RequestFactory>(() => new DefaultRequestFactory(IOC.retrieve.an<MappingGateway>()));
+            resolvers.add<ViewBroker>(() => new DefaultViewBroker(IOC.retrieve.an<DefaultViewPathRegistry>()));
+            resolvers.add<Renderer>(() => new WebFormRenderer(IOC.retrieve.an<ViewBroker>()));
+            resolvers.add<DefaultViewPathRegistry>(get_viewmappings);
+            WebFormRenderer.retriever = () => HttpContext.Current;
+        }
+
+        static void configure_core_services()
+        {
             ResolverRegistry registry = new DefaultResolverRegistry(resolvers);
             var c = new DefaultContainer(registry);
-
-            resolvers.add<Container>(() => c);
-
             IOC.container_resolver = () => c;
-            WebFormRenderer.retriever = () => HttpContext.Current;
+            resolvers.add<Container>(() => c);
         }
 
         static DefaultViewPathRegistry get_viewmappings()
         {
             var mappings = new DefaultViewPathRegistry();
-            mappings.register_path_for<IEnumerable<Department>>( "~/views/DepartmentBrowser.aspx"); 
+            mappings.register_path_for<IEnumerable<Department>>("~/views/DepartmentBrowser.aspx");
             return mappings;
         }
 
         static object get_commands()
         {
-            List<RequestCommand> commands = new List<RequestCommand>();
+            var commands = new List<RequestCommand>();
             commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewMainDepartments.store",
                                                    new ViewMainDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(),
                                                                            IOC.retrieve.an<Renderer>())));
             commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewSubDepartments.store",
                                                    new ViewSubDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(),
-                                                                           IOC.retrieve.an<Renderer>())));
+                                                                          IOC.retrieve.an<Renderer>())));
             return commands;
-        }
-
-        static object get_mappers()
-        {
-            IDictionary<Type, IDictionary<Type, object>> mappers = new Dictionary<Type, IDictionary<Type, object>>();
-            mappers.add(new DepartmentMapper());
-            return mappers;
         }
     }
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DF3A63F9-8783-4FDA-8A31-76667E114CEF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -76,6 +76,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="infrastructure\AutomaticDependencyResolverSpecs.cs" />
     <Compile Include="infrastructure\ContainerSpecs.cs" />
     <Compile Include="infrastructure\DefaultMapperRegistrySpecs.cs" />
     <Compile Include="infrastructure\FunctionalDependencyResolverSpecs.cs" />
