@@ -87,7 +87,11 @@
     <Compile Include="tasks\Repository.cs" />
     <Compile Include="infrastructure\Command.cs" />
     <Compile Include="tasks\startup\ConfigureCoreServices.cs" />
+    <Compile Include="tasks\startup\ConfigureFrontController.cs" />
     <Compile Include="tasks\startup\ConfigureInfrastructure.cs" />
+    <Compile Include="tasks\startup\ConfigureMappers.cs" />
+    <Compile Include="tasks\startup\ConfigureRoutes.cs" />
+    <Compile Include="tasks\startup\ConfigureServiceLayer.cs" />
     <Compile Include="tasks\startup\DefaultStartupBuilder.cs" />
     <Compile Include="tasks\startup\DefaultStartupCommandFactory.cs" />
     <Compile Include="tasks\startup\Start.cs" />
