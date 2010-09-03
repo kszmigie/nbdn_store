@@ -1,12 +1,6 @@
 <%@ MasterType VirtualPath="Store.master" %>
-<<<<<<< HEAD
-<%@ Page Language="c#" AutoEventWireup="true"
-Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master"
-%>
-
-=======
-<%@ Page Language="c#" AutoEventWireup="true" Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master" %>
->>>>>>> hack
+<%@ Page Language="c#" AutoEventWireup="true" Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Generic.IEnumerable`1[[nothinbutdotnetstore.model.Product, nothinbutdotnetstore, Version=0.0.0.0]], mscorlib, Version=3.5.0.0]], nothinbutdotnetstore, Version=0.0.0.0" MasterPageFile="Store.master"%>
+<%@ Import Namespace="nothinbutdotnetstore.web.application" %>
 
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
     <form></form>
@@ -29,12 +23,12 @@ Inherits="nothinbutdotnetstore.web.core.DefaultViewFor`1[[System.Collections.Gen
              {%>
             <tr class="nonShadedRow">
                		 <td class="ListItem">                     
-                        <a href="~/views/ProductDetail.aspx"><%=product.name%></a>
-                        <br /><br />
-                        <%= product.description %>
-                        <br /><br />
-                        <%= product.price %>
-                	</td>
+                        <a href="<%= Url.For(product) %>"> <%=product.name%></a>
+                     <td> <%= product.name %> </td>
+                      <td>   <%= product.description %> </td>
+                      <td>   <%= product.quantity %> </td>
+                      <td>   <%= product.price %> </td>
+                      
            	 </tr>        
              <%
              }%>    						

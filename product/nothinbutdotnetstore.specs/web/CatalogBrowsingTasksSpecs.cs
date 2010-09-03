@@ -85,5 +85,22 @@ namespace nothinbutdotnetstore.specs.web
             private static IEnumerable<Product> the_products;
             private static Department requested_department;
         }
+
+        [Subject(typeof(DefaultCatalogBrowsingTasks))]
+        public class when_requesting_product_details : concern
+        {
+            private Establish c = () =>
+                                      {
+                                          var repository = new StubRepository();
+                                          provide_a_basic_sut_constructor_argument((Repository)repository);
+                                          expected_product = repository.get_products().First(product => true);  //take any
+                                      };
+            private Because b = () =>
+                                product = sut.get_product_details(expected_product.id);
+
+            private It should_return_the_product_details = () => product.ShouldEqual(expected_product);
+            private static Product product;
+            private static Product expected_product;
+        }
     }
 }

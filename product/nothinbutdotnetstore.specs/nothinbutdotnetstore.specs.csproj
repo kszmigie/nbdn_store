@@ -98,8 +98,11 @@
     <Compile Include="web\CommandBrokerSpecs.cs" />
     <Compile Include="web\ControllerDispatcherSpecs.cs" />
     <Compile Include="web\DepartmentMapperSpecs.cs" />
+    <Compile Include="web\ProductMapperSpecs.cs" />
     <Compile Include="web\RequestFactorySpecs.cs" />
     <Compile Include="web\RequestSpecs.cs" />
+    <Compile Include="web\UrlSpecs.cs" />
+    <Compile Include="web\ViewProductDetailsSpecs.cs" />
     <Compile Include="web\ViewProductsSpecs.cs" />
     <Compile Include="web\ViewSubDepartmentsSpecs.cs" />
     <Compile Include="web\FrontControllerSpecs.cs" />

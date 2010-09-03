@@ -13,7 +13,9 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
 
         static int id = 0;
         int next_id { get { return ++id; } }
-
+        static int product_id = 0;
+        static int next_prod_id { get { return ++id; }}
+        
         public StubRepository()
         {
             departments = new List<Department>();
@@ -32,7 +34,7 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing.stubs
                     departments.Add(sub_department);
                     for (int productCounter = 0; productCounter < 10; productCounter++)
                     {
-                        products.Add(new Product{name = string.Format("Product_{0}_{1}_{2}", main_department.id, sub_department.id, productCounter), parent_department = sub_department});
+                        products.Add(new Product{name = string.Format("Product_{0}_{1}_{2}", main_department.id, sub_department.id, productCounter), id = next_prod_id, parent_department = sub_department});
                     }
                 }
             }

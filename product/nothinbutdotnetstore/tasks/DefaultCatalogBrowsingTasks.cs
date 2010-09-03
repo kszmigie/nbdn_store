@@ -26,7 +26,12 @@ namespace nothinbutdotnetstore.tasks
 
         public IEnumerable<Product> get_all_products_in(Department parent_department)
         {
-            return repository.get_products().Where(p => p.parent_department == parent_department);
+            return repository.get_products().Where(p => p.parent_department.id == parent_department.id);
+        }
+
+        public Product get_product_details(int id)
+        {
+            return repository.get_products().First(p => p.id.Equals(id));
         }
     }
 }

@@ -29,6 +29,12 @@ namespace nothinbutdotnetstore.tasks.startup
             commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewSubDepartments.store",
                                                    new ViewSubDepartments(IOC.retrieve.an<CatalogBrowsingTasks>(),
                                                                           IOC.retrieve.an<Renderer>())));
+            commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewProducts.store",
+                                       new ViewProducts(IOC.retrieve.an<CatalogBrowsingTasks>(),
+                                                              IOC.retrieve.an<Renderer>())));
+            commands.Add(new DefaultRequestCommand(r => r.application_command_name == "ViewProductDetails.store",
+                                       new ViewProductDetails(IOC.retrieve.an<CatalogBrowsingTasks>(),
+                                                              IOC.retrieve.an<Renderer>())));
             return commands;
         }
     }

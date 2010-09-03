@@ -106,7 +106,9 @@
     <Compile Include="tasks\startup\StartupServices.cs" />
     <Compile Include="tasks\startup\DefaultStartupServices.cs" />
     <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewProductDetails.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
+    <Compile Include="web\application\ProductMapper.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
     <Compile Include="web\core\DefaultRequestFactory.cs" />
     <Compile Include="web\core\DefaultViewBroker.cs" />

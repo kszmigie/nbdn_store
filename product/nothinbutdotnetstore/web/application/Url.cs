@@ -8,6 +8,7 @@ namespace nothinbutdotnetstore.web.application
     public class Url
     {
         private static IEnumerable<Product> _productRepository;
+        private static string default_extension = ".store?";
 
         public Url(IEnumerable<Product> productRepository)
         {
@@ -19,9 +20,17 @@ namespace nothinbutdotnetstore.web.application
             string query_string = DepartmentMapper.id_tag + "=" + department.id;
             if (department.has_products)
             {
-                return typeof (ViewProducts).Name + ".store?" + query_string;
+                return typeof (ViewProducts).Name + default_extension + query_string;
             }
-            return typeof (ViewSubDepartments).Name + ".store?" + query_string;
+            return typeof (ViewSubDepartments).Name + default_extension + query_string;
         }
+                
+        public static string For(Product product)
+        {
+         
+            string query_string = ProductMapper.id_tag + "=" + product.id;
+            return (typeof (ViewProductDetails)).Name + default_extension + query_string;
+        }
+
     }
 }

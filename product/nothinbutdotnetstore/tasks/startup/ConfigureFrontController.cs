@@ -32,6 +32,8 @@ namespace nothinbutdotnetstore.tasks.startup
         {
             var mappings = new DefaultViewPathRegistry();
             mappings.register_path_for<IEnumerable<Department>>("~/views/DepartmentBrowser.aspx");
+            mappings.register_path_for<IEnumerable<Product>>("~/views/ProductBrowser.aspx");
+            mappings.register_path_for<Product>("~/views/ProductDetail.aspx");
             return mappings;
         }
     }

@@ -4,6 +4,7 @@ namespace nothinbutdotnetstore.model
     {
         private Department department;
 
+        public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         
@@ -17,5 +18,6 @@ namespace nothinbutdotnetstore.model
             }
         }
         public decimal price { get; set; }
+        public decimal quantity { get; set; }
     }
 }
