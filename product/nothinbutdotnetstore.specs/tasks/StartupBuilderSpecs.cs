@@ -67,7 +67,7 @@ namespace nothinbutdotnetstore.specs.tasks
              Establish c = () =>
                  {
                      the_command = an<StartupCommand>();
-                     existing_types = new Type[] {typeof (FakeStartupCommand)};
+                     existing_types = new Type[0];
 
                      command_factory = the_dependency<StartupCommandFactory>();
                      provide_a_basic_sut_constructor_argument(existing_types);

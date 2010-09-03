@@ -96,6 +96,7 @@
     <Compile Include="tasks\startup\StartupCommand.cs" />
     <Compile Include="tasks\startup\StartupCommandFactory.cs" />
     <Compile Include="tasks\startup\StartupServices.cs" />
+    <Compile Include="tasks\startup\stubs\StubStartupServices.cs" />
     <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
     <Compile Include="web\core\DefaultRequest.cs" />
