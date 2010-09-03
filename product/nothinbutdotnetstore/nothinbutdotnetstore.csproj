@@ -88,8 +88,13 @@
     <Compile Include="infrastructure\Command.cs" />
     <Compile Include="tasks\startup\ConfigureCoreServices.cs" />
     <Compile Include="tasks\startup\ConfigureInfrastructure.cs" />
+    <Compile Include="tasks\startup\DefaultStartupBuilder.cs" />
+    <Compile Include="tasks\startup\DefaultStartupCommandFactory.cs" />
+    <Compile Include="tasks\startup\Start.cs" />
     <Compile Include="tasks\startup\Startup.cs" />
+    <Compile Include="tasks\startup\StartupBuilder.cs" />
     <Compile Include="tasks\startup\StartupCommand.cs" />
+    <Compile Include="tasks\startup\StartupCommandFactory.cs" />
     <Compile Include="tasks\startup\StartupServices.cs" />
     <Compile Include="web\application\catalogbrowsing\stubs\StubRepository.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartments.cs" />
