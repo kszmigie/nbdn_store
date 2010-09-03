@@ -1,100 +1,113 @@
- using System;
- using System.Collections.Generic;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.tasks.startup;
- using Machine.Specifications.DevelopWithPassion.Extensions;
- using Rhino.Mocks;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Extensions;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.infrastructure;
+using nothinbutdotnetstore.tasks.startup;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs.tasks
- {   
-     public class StartupBuilderSpecs
-     {
-         public abstract class concern : Observes<StartupBuilder,
-                                             DefaultStartupBuilder>
-         {
-        
-         }
+{
+    public class StartupBuilderSpecs
+    {
+        public abstract class concern : Observes<StartupBuilder,
+                                            DefaultStartupBuilder>
+        {
+        }
 
-         [Subject(typeof(DefaultStartupBuilder))]
-         public class when_asked_to_include_a_startup_command : concern
-         {
-             Establish c = () =>
-                 {
-                     existing_types = new Type[0];
-                     provide_a_basic_sut_constructor_argument(existing_types);
-                 };
+        [Subject(typeof(DefaultStartupBuilder))]
+        public class when_created_with_only_the_type : concern
+        {
+            Establish c = () =>
+            {
+                the_command = an<StartupCommand>();
+                factory = an<StartupCommandFactory>();
+                factory.Stub(x => x.create_command_of(typeof(FakeStartupCommand))).Return(the_command);
 
+                create_sut_using(() => new DefaultStartupBuilder(typeof(FakeStartupCommand), factory));
+            };
 
-             Because b = () =>
+            It should_create_the_command_using_the_factory = () =>
+                sut.downcast_to<DefaultStartupBuilder>().command.ShouldEqual(the_command);
+
+            static StartupCommand the_command;
+            static StartupCommandFactory factory;
+        }
+
+        public abstract class concern_for_a_builder_that_has_an_existing_command : Observes<StartupBuilder,
+                                                                                       DefaultStartupBuilder>
+        {
+            Establish c = () =>
+            {
+                command = the_dependency<Command>();
+                factory = the_dependency<StartupCommandFactory>();
+            };
+
+            protected static StartupCommandFactory factory;
+            protected static Command command;
+        }
+
+        [Subject(typeof(DefaultStartupBuilder))]
+        public class when_following_with_another_command : concern_for_a_builder_that_has_an_existing_command
+        {
+            Establish c = () =>
+            {
+                startup_command = an<StartupCommand>();
+
+                factory.Stub(x => x.create_command_of(typeof(FakeStartupCommand)))
+                    .Return(startup_command);
+            };
+
+            Because b = () =>
                 result = sut.followed_by<FakeStartupCommand>();
 
-             It should_a_new_builder_to_allow_method_chaining = () =>
-                result.ShouldBeAn<StartupBuilder>().ShouldNotEqual(sut);
+            It should_a_new_builder_to_allow_method_chaining = () =>
+                result.ShouldBeAn<DefaultStartupBuilder>().command.ShouldBeAn<ChainedCommand>();
 
-             It should_keep_track_of_the_type_of_that_command = () =>
-             {
+            static StartupBuilder result;
+            static StartupCommand startup_command;
+        }
 
-             };
+        [Subject(typeof(DefaultStartupBuilder))]
+        public class when_asked_to_finish_registration_of_startup_command :
+            concern
+        {
+            Establish c = () =>
+            {
+                factory = an<StartupCommandFactory>();
+                startup_command = the_dependency<Command>();
+                second_command = an<StartupCommand>();
+                factory.Stub(command_factory => command_factory.create_command_of(typeof(AnotherFakeStartupCommand))).
+                    Return(second_command);
 
-             static StartupBuilder result;
-             static IEnumerable<Type> existing_types;
-         }
-         
-         [Subject(typeof(DefaultStartupBuilder))]
-         public class when_asked_to_include_an_additional_startup_command : concern
-         {
-             Establish c = () =>
-                 {
-                     existing_types = new Type[] {typeof (StartupCommand)};
-                     provide_a_basic_sut_constructor_argument(existing_types);
-                 };
+                create_sut_using(() => new DefaultStartupBuilder(startup_command,factory));
+            };
 
+            Because b = () =>
+                sut.finish_by<AnotherFakeStartupCommand>();
 
-             Because b = () =>
-                result = sut.followed_by<FakeStartupCommand>();
+            It should_run_all_of_the_commands = () =>
+            {
+                startup_command.received(x => x.run());
+                second_command.received(x => x.run());
+            };
 
-             It should_keep_track_of_the_type_of_that_command = () =>
-             {
-             };
+            static StartupCommand second_command;
+            static Command startup_command;
+            static StartupCommandFactory factory;
+        }
 
-             static StartupBuilder result;
-             static IEnumerable<Type> existing_types;
-         }
-
-         [Subject(typeof(DefaultStartupBuilder))]
-         public class when_asked_to_finish_registration_of_startup_command : concern
-         {
-             Establish c = () =>
-                 {
-                     the_command = an<StartupCommand>();
-                     existing_types = new Type[0];
-
-                     command_factory = the_dependency<StartupCommandFactory>();
-                     provide_a_basic_sut_constructor_argument(existing_types);
-
-                     command_factory.Stub(cf => cf.create_command_of(typeof (FakeStartupCommand))).Return(the_command);
-                 };
-
-
-             Because b = () =>
-                sut.finish_by<FakeStartupCommand>();
-
-             It should_create_instances_of_startup_commands_and_invoke_run = () =>
-                 the_command.received(c => c.run());
-
-             static StartupBuilder result;
-             static IEnumerable<Type> existing_types;
-             static StartupCommand the_command;
-             static StartupCommandFactory command_factory;
-         }
-
-        class FakeStartupCommand : StartupCommand
+        public class FakeStartupCommand : StartupCommand
         {
             public void run()
             {
-                
             }
         }
-     }
- }
+
+        class AnotherFakeStartupCommand : StartupCommand
+        {
+            public void run()
+            {
+            }
+        }
+    }
+}
