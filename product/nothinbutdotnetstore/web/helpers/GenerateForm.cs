@@ -25,6 +25,8 @@ namespace nothinbutdotnetstore.web.helpers
         }
     }
 
+
+
     public class FormInputBuilder
     {
         private readonly string _name;
@@ -54,10 +56,20 @@ namespace nothinbutdotnetstore.web.helpers
             this.classname = classname;
             return this;
         }
+
+
+
         public string Build()
         {
             return string.Format("<input type='submit' text='{0}' value='{1}' id='{2}' class='{3}' /></td>",
                      _name, text, action, classname);
         }
+
+        public static implicit operator string(FormInputBuilder inputBuilder)
+        {
+            return inputBuilder.Build();
+
+        }
+
     }
 }

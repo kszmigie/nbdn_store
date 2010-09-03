@@ -6,7 +6,7 @@
 
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
 							
-		<%=FormField.For<Product>(model) %>					
+		<%=GenerateForm.For(model) %>					
 							<table style="WIDTH: 456px; HEIGHT: 114px" width="456">
 								<tr>
 									<td class="ListHead" id="productName" runat="server">
@@ -24,7 +24,7 @@
 											</tr>
 											<tr valign="top">
 												<td id="Td1" align="right" colspan="2" runat="server">
-													<%=GenerateSubmit.For<Product>(model).WithText( "Add to cart").WithAction( "addToCartButton").WithClass("NormalButton").Build()%></td>
+													<%=GenerateSubmit.For(model).WithText( "Add to cart").WithAction( "addToCartButton").WithClass("NormalButton")%></td>
 													
 											</tr>
 										</table>
