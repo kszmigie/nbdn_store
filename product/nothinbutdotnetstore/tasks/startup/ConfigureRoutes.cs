@@ -17,8 +17,7 @@ namespace nothinbutdotnetstore.tasks.startup
 
         public void run()
         {
-
-            services.add<IEnumerable<RequestCommand>>(get_commands);
+            services.register_dependency_factory<IEnumerable<RequestCommand>>(get_commands);
         }
 
         static object get_commands()

@@ -4,6 +4,8 @@
  using Machine.Specifications;
  using Machine.Specifications.DevelopWithPassion.Rhino;
  using nothinbutdotnetstore.infrastructure.containers.basic;
+ using nothinbutdotnetstore.tasks.startup;
+ using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs.infrastructure
  {   
@@ -22,20 +24,20 @@ namespace nothinbutdotnetstore.specs.infrastructure
                  {
                      resolver_for_type = an<DependencyResolver>();
 
-                     resolvers = new Dictionary<Type, DependencyResolver>();
-                     resolvers[typeof(IDbConnection)] = resolver_for_type;
-                     provide_a_basic_sut_constructor_argument(resolvers);
+                     resolvers = the_dependency<StartupServices>();
+
+                     resolvers.Stub(r => r.get_resolver_for(typeof (IDbConnection))).Return(resolver_for_type);
                  };
 
              Because b = () =>
                 result = sut.get_resolver_to_create(typeof (IDbConnection));
 
-             It it_should_return_the_corresponding_resolver = () =>
+             It should_return_the_corresponding_resolver = () =>
                  result.ShouldEqual(resolver_for_type);
 
              static DependencyResolver result;
              static DependencyResolver resolver_for_type;
-             static IDictionary<Type, DependencyResolver> resolvers;
+             static StartupServices resolvers;
          }
      }
 

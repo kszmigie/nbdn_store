@@ -6,7 +6,6 @@ using nothinbutdotnetstore.infrastructure;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
 using nothinbutdotnetstore.model;
-using nothinbutdotnetstore.tasks.startup.stubs;
 using nothinbutdotnetstore.web;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
 using nothinbutdotnetstore.web.application.catalogbrowsing.stubs;
@@ -28,7 +27,7 @@ namespace nothinbutdotnetstore.tasks.startup
 
         public static void run()
         {
-            StartupServices ss = new StubStartupServices();
+            StartupServices ss = new DefaultStartupServices();
             StartupCommandFactory command_factory = new DefaultStartupCommandFactory(ss);
 
             Start.by<ConfigureCoreServices>(command_factory)
