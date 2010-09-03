@@ -23,9 +23,12 @@ namespace nothinbutdotnetstore.specs.tasks
                  };
 
 
-             It should_create_functional_dependency_resolver = () =>
+             It should_return_corresponding_resolver = () =>
                     result.ShouldBeAn<FunctionalDependencyResolver>();
-//                          .create().ShouldEqual("blah");
+
+             It should_create_functional_resolver_using_passed_delegate = () =>
+                 result.create().ShouldEqual("blah");
+
 
              static DependencyResolver result;
          }
