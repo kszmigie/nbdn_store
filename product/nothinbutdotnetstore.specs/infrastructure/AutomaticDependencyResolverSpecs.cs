@@ -42,9 +42,6 @@ namespace nothinbutdotnetstore.specs.infrastructure
                 constructor_selection_strategy.Stub(x => x.get_applicable_constructor_on(typeof(MyDependencyWithOtherDependencies))).Return(the_constructor);
             };
 
-            Because b = () =>
-                result = sut.create();
-
 
             It should_return_the_dependency_with_all_of_its_dependencies_provided = () =>
             {
@@ -53,6 +50,9 @@ namespace nothinbutdotnetstore.specs.infrastructure
                 item.command.ShouldEqual(the_command);
                 item.reader.ShouldEqual(the_reader);
             };
+
+            private Because b = () =>
+                                result = sut.create();
 
             static object result;
             static IDbConnection the_connection;
