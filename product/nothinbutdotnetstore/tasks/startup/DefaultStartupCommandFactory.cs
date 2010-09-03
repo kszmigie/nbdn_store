@@ -12,6 +12,11 @@ namespace nothinbutdotnetstore.tasks.startup
             this.startup_services = startup_services;
         }
 
+        public DefaultStartupCommandFactory() : this(new DefaultStartupServices())
+        {
+
+        }
+
         public StartupCommand create_command_of(Type type)
         {
             var constructor = type.GetConstructors().Single();

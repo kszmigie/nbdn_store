@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.tasks.startup;
+using Machine.Specifications.DevelopWithPassion.Extensions;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs.tasks
 {
@@ -24,7 +27,7 @@ namespace nothinbutdotnetstore.specs.tasks
                 result = Start.by<FakeStartupCommand>(command_factory);
 
             It should_return_a_startup_builder = () =>
-                result.ShouldBeAn<StartupBuilder>();
+                result.ShouldBeOfType<StartupBuilder>();
 
             It should_use_the_provided_factory_in_the_startup_builder =()=>
                 result.ShouldBeAn<DefaultStartupBuilder>().command_factory.ShouldEqual(command_factory);
@@ -36,6 +39,10 @@ namespace nothinbutdotnetstore.specs.tasks
         
         class FakeStartupCommand : StartupCommand
         {
+            public FakeStartupCommand(StartupServices startup_services)
+            {
+            }
+
             public void run()
             {
                 
