@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DF3A63F9-8783-4FDA-8A31-76667E114CEF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -85,6 +85,7 @@
     <Compile Include="infrastructure\ResolverRegistrySpecs.cs" />
     <Compile Include="infrastructure\MappingGatewaySpecs.cs" />
     <Compile Include="tasks\StartupSpecs.cs" />
+    <Compile Include="utility\ExpressionUtility.cs" />
     <Compile Include="utility\ObjectMother.cs" />
     <Compile Include="ViewBrokerSpec.cs" />
     <Compile Include="web\CatalogBrowsingTasksSpecs.cs" />

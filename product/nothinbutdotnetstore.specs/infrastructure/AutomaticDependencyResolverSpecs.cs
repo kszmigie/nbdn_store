@@ -1,10 +1,13 @@
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq.Expressions;
 using System.Reflection;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.infrastructure.containers;
 using nothinbutdotnetstore.infrastructure.containers.basic;
+using nothinbutdotnetstore.specs.utility;
 using Rhino.Mocks;
 using System.Linq;
 
@@ -30,9 +33,12 @@ namespace nothinbutdotnetstore.specs.infrastructure
                 the_command = an<IDbCommand>();
                 the_reader = an<IDataReader>();
 
-                the_constructor =
-                    typeof(MyDependencyWithOtherDependencies).GetConstructors().OrderByDescending(
-                        x => x.GetParameters().Count()).First();
+                var name = ExpressionUtility.create_expression_builder<MyDependencyWithOtherDependencies>()
+                    .get_the_name_of_the_member(x => x.the_connection);
+
+
+                the_constructor = ExpressionUtility.create_expression_builder<MyDependencyWithOtherDependencies>()
+                    .get_constructor(() => new MyDependencyWithOtherDependencies(null,null,null));
 
 
                 the_container.Stub(x => x.an(typeof(IDbConnection))).Return(the_connection);
@@ -46,7 +52,7 @@ namespace nothinbutdotnetstore.specs.infrastructure
             It should_return_the_dependency_with_all_of_its_dependencies_provided = () =>
             {
                 var item = result.ShouldBeAn < MyDependencyWithOtherDependencies >();
-                item.connection.ShouldEqual(the_connection);
+                item.the_connection.ShouldEqual(the_connection);
                 item.command.ShouldEqual(the_command);
                 item.reader.ShouldEqual(the_reader);
             };
@@ -66,20 +72,20 @@ namespace nothinbutdotnetstore.specs.infrastructure
 
     public class MyDependencyWithOtherDependencies
     {
-        public IDbConnection connection;
+        public IDbConnection the_connection;
         public IDataReader reader;
         public IDbCommand command;
 
-        public MyDependencyWithOtherDependencies(IDbConnection connection, IDataReader reader, IDbCommand command)
+        public MyDependencyWithOtherDependencies(IDbConnection the_connection, IDataReader reader, IDbCommand command)
         {
-            this.connection = connection;
+            this.the_connection = the_connection;
             this.reader = reader;
             this.command = command;
         }
 
-        public MyDependencyWithOtherDependencies(IDbConnection connection, IDataReader reader)
+        public MyDependencyWithOtherDependencies(IDbConnection the_connection, IDataReader reader)
         {
-            this.connection = connection;
+            this.the_connection = the_connection;
             this.reader = reader;
         }
     }
