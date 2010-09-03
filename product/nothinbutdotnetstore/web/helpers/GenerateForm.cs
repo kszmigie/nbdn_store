@@ -2,7 +2,7 @@ using nothinbutdotnetstore.model;
 
 namespace nothinbutdotnetstore.web.helpers
 {
-    public static class FormField
+    public static class GenerateForm
     {
         private static string modelTypeName;
 
@@ -20,19 +20,19 @@ namespace nothinbutdotnetstore.web.helpers
         public static FormInputBuilder For<T>(T model) where T : Identity
         {
             modelTypeName = typeof(T).Name;
-            return new FormInputBuilder(modelTypeName);
+            return new FormInputBuilder(modelTypeName) {inputtype="submit"};
 
         }
     }
 
 
-
     public class FormInputBuilder
     {
         private readonly string _name;
-        private string text;
-        private string action;
-        private string classname;
+        public string text { get; set; }
+        public string action { get; set; }
+        public string classname { get; set; }
+        public string inputtype { get; set; }
 
         public FormInputBuilder(string name)
         {
@@ -61,8 +61,8 @@ namespace nothinbutdotnetstore.web.helpers
 
         public string Build()
         {
-            return string.Format("<input type='submit' text='{0}' value='{1}' id='{2}' class='{3}' /></td>",
-                     _name, text, action, classname);
+            return string.Format("<input type='{4}' text='{0}' value='{1}' id='{2}' class='{3}' /></td>",
+                     _name, text, action, classname, inputtype);
         }
 
         public static implicit operator string(FormInputBuilder inputBuilder)

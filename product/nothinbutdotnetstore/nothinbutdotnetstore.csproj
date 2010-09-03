@@ -141,7 +141,7 @@
     <Compile Include="web\application\catalogbrowsing\ViewProducts.cs" />
     <Compile Include="web\application\DepartmentMapper.cs" />
     <Compile Include="web\application\Url.cs" />
-    <Compile Include="web\helpers\FormField.cs" />
+    <Compile Include="web\helpers\GenerateForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
